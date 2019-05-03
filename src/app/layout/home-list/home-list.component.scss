@@ -10,7 +10,7 @@
 
 .centerWrapper{
     margin-top: 30px;
-    width: 70%;
+    width: 75%;
     height: 100%;
     border-radius: 20px;
     -webkit-box-shadow: 0px 0px 35px -25px rgba(0,0,0,0.75);
@@ -24,6 +24,7 @@
     font-size: 30px;
     font-weight: bold;
     color: #39c84c;
+    margin-left: 5px;
 }
 
 .matSelect{
@@ -49,7 +50,7 @@
 .btnSearch{
     position: absolute;
     right: 40px;
-    top: 15%;
+    top: 13.5%;
 }
 
 .ctnList{
@@ -74,12 +75,30 @@
     border-bottom-right-radius: 10px;
     bottom: 0px;
     width: 100%;
-    background: #eeeeee;
+    // background: #eeeeee;
 
 
     
 }
 
+.marca{
+    font-size: 12px;
+}
+.modelo{
+    font-size: 20px;
+}
+.year{
+    font-size: 12px;
+}
+.plate{
+    font-size: 12px;
+}
+.pricefn{
+    font-size: 15px;
+    font-weight: bold;
+    color: #39c84c;
+
+}
 
 ::-webkit-scrollbar-track
 {

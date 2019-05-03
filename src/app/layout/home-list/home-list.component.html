@@ -1,0 +1,117 @@
+<div class="body" align="center">
+
+
+    <mat-card class="centerWrapper" align="center">
+
+
+        <div class="row">
+            <div class="col-sm-12" align="left">
+                <label class="cSearch">Buscar</label>
+            </div>
+        </div>
+
+        <div class="row ctnBar" style="width: 90%;">
+            <div class="col-sm-3" align="left">
+
+                <mat-form-field>
+                    <mat-label>Comuna</mat-label>
+                    <mat-select>
+                        <mat-option>
+                            sad
+                        </mat-option>
+                        <mat-option>
+                            sad
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+            </div>
+            <div class="col-sm-3" align="left">
+                <mat-form-field style="width: 100%;">
+                    <input matInput [matDatepicker]="picker" (focus)="picker.open()" placeholder="Fecha inicio">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+            </div>
+
+            <div class="col-sm-3">
+                <mat-form-field style="width: 100%;">
+                    <input matInput [matDatepicker]="picker2" (focus)="picker.open()" placeholder="Fecha entrega">
+                    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                    <mat-datepicker #picker2></mat-datepicker>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-3">
+
+                <mat-form-field>
+                    <mat-label>Tipo de vehiculo</mat-label>
+                    <mat-select>
+                        <mat-option>
+                            sad
+                        </mat-option>
+                        <mat-option>
+                            sad
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+            </div>
+
+
+
+        </div>
+        <button class="btn btn-primary btnSearch" type="button">
+            j
+        </button>
+
+        <div class="ctnList">
+            
+            <br>
+            <div class="row">
+                <div class="col-sm-4" *ngFor="let item of dataIN; let i = index">
+                    <mat-card class="cardList" >
+                        <img mat-card-image src="http://placehold.it/350x250">
+                        <label for="">Marca</label><br>
+                        <label for="">Kia Sorento</label>
+                        <div class="row">
+                            <div class="col-sm-6" align="left" >
+                                <label for="">HO</label>
+                            </div>
+                            <div class="col-sm-6" align="right">
+                                <label for="">LA</label>
+                            </div>
+                        </div>
+                        <div class="row foot">
+                            <div class="col-sm-6" align="left" >
+                                <label for="">HO</label>
+                            </div>
+                            <div class="col-sm-6" align="right">
+                                <label for="">LA</label>
+                            </div>
+                        </div>
+                    </mat-card>
+                    <br >
+                </div>
+            </div>
+            
+            <!-- <div fxLayout='row' fxLayoutWrap fxLayoutGap="2rem">
+                    <mat-card fxFlex.gt-md="20" fxFlex.md="28"  fxFlex.sm="40" fxFlex.xs="100" *ngFor="let recipe of dataIN"  class="recipe-card">
+                      <mat-card-header>
+                        <mat-card-title>element</mat-card-title>
+                      </mat-card-header>
+                      <img mat-card-image src="http://placehold.it/350x200">
+                      <mat-card-content>
+                        <p>
+                          Lorem Ipsum
+                        </p>
+                      </mat-card-content>
+                    </mat-card>
+            </div> -->
+
+        </div>
+
+
+
+    </mat-card>
+
+</div>

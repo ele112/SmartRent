@@ -1,7 +1,7 @@
 
 import { Injectable } from '@angular/core';
 import { FormControl, FormGroup, Validators } from "@angular/forms";
-import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+// import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 // import { Observable } from 'rxjs';
 // import 'rxjs/add/observable/fromPromise';
 
@@ -9,9 +9,7 @@ import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 export class BaseService {
 
 
-    usersList: AngularFireList<any>;
-
-    constructor(private firebase: AngularFireDatabase) { 
+    constructor() { 
 
     }
 

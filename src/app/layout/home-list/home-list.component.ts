@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireDatabase, AngularFireList } from 'angularfire2/database'
+import {BaseService} from '../../service/base.service';
 
 @Component({
   selector: 'app-home-list',
@@ -38,7 +40,13 @@ export class HomeListComponent implements OnInit {
     
 
   ]
-  constructor() { }
+
+
+
+  constructor(private baseService: BaseService) { 
+    this.baseService.getUsers();
+
+  }
 
   ngOnInit() {
   }

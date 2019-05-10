@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-declare var $:any;
 
 @Component({
   selector: 'app-header',
@@ -9,12 +8,13 @@ declare var $:any;
 })
 export class HeaderComponent implements OnInit {
   btnAccionModal:any;
+
   constructor() { 
 
   }
 
   ngOnInit() {
-    
+
   }
 
 

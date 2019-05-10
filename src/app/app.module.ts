@@ -12,7 +12,6 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { environment } from '../environments/environment';
 import { BaseService } from './service/base.service';
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
-import { AngularFirestore } from 'angularfire2/firestore';
 import { MenuComponent } from './layout/menu/menu.component';
 import { PublicarAvisoComponent } from './layout/publicar-aviso/publicar-aviso.component';
 import { FichaVehiculoComponent } from './layout/ficha-vehiculo/ficha-vehiculo.component';
@@ -45,7 +44,7 @@ import { PerfilComponent } from './layout/perfil/perfil.component';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule
   ],
-  providers: [BaseService, AngularFirestore],
+  providers: [BaseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

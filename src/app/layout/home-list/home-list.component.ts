@@ -40,7 +40,7 @@ export class HomeListComponent implements OnInit {
     
 
   ]
-
+  comuna: any;
 
   comunas = [
     {

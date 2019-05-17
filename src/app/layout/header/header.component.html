@@ -12,9 +12,9 @@
   
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
-    <div class="modal-content">
+    <div class="modal-content" *ngIf="login">
       
       <div class="wrapperLogin">
 
@@ -54,9 +54,19 @@
                   Iniciar sesion
                 </button>
               </div>
+              <br>
+              <button class="btn btn-outline" (click)="registro()">
+                Registrarse
+              </button>
             </form>
           
 
+
+
+
+    </div>
+    <div class=" register" *ngIf="!login">
+        h
 
 
 

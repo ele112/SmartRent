@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 // import { AngularFireDatabase, AngularFireList } from 'angularfire2/database'
-import {BaseService} from '../../service/base.service';
+// import {BaseService} from '../../service/fire.service';
 
 @Component({
   selector: 'app-home-list',
@@ -42,13 +42,60 @@ export class HomeListComponent implements OnInit {
   ]
 
 
+  comunas = [
+    {
+      "nombre": "Santiago",
+      "id": 1,
+    },
+    {
+      "nombre": "Cerrillos",
+      "id": 2,
+    },
+    {
+      "nombre": "Cerro Navia",
+      "id": 1,
+    },
+    {
+      "nombre": "El Bosque",
+      "id": 1,
+    },
+    {
+      "nombre": "Estación Central",
+      "id": 1,
+    },
+    {
+      "nombre": "Huechuraba",
+      "id": 1,
+    }
+  ]
 
-  constructor(private baseService: BaseService) { 
-    this.baseService.getUsers();
+  vehiculo = [
+    {
+      "tipo": "Normal",
+      "id": 1
+    },
+    {
+      "tipo": "Carga Pesada",
+      "id": 1
+    },
+    {
+      "tipo": "Camion",
+      "id": 1
+    }
+  ]
+  constructor() { 
+    // this.baseService.getUsers();
 
   }
 
   ngOnInit() {
+  }
+
+  comunaSelected(comuna){
+
+  }
+  solicitarArriendo(){
+    
   }
 
 }

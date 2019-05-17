@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import {ModelBD} from '../../service/modelBD';
 
 @Component({
   selector: 'app-header',
@@ -8,14 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   btnAccionModal:any;
-
-  constructor() { 
-
+  login:boolean = true;
+  constructor(public bd: ModelBD) { 
+    this.bd.getP();
   }
 
   ngOnInit() {
 
   }
-
+  
+  registro(){
+    this.login = false;
+  }
 
 }

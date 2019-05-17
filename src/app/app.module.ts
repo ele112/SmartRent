@@ -7,10 +7,7 @@ import { HeaderComponent } from './layout/header/header.component';
 import { HomeListComponent } from './layout/home-list/home-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
-// import { AngularFireModule } from 'angularfire2';
-// import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { environment } from '../environments/environment';
-import { BaseService } from './service/base.service';
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { MenuComponent } from './layout/menu/menu.component';
 import { PublicarAvisoComponent } from './layout/publicar-aviso/publicar-aviso.component';
@@ -19,9 +16,7 @@ import { CrearSolicitudComponent } from './layout/crear-solicitud/crear-solicitu
 import { AvisosPublicadosComponent } from './layout/avisos-publicados/avisos-publicados.component';
 import { SolicitudesComponent } from './layout/solicitudes/solicitudes.component';
 import { PerfilComponent } from './layout/perfil/perfil.component';
-import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
-import { AngularFireDatabaseModule, AngularFireDatabase, AngularFireList } from 'angularfire2/database';
-import { AngularFireModule } from 'angularfire2';
+import {ModelBD} from './service/modelBD';
 
 
 @NgModule({
@@ -40,15 +35,12 @@ import { AngularFireModule } from 'angularfire2';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AngularFireDatabaseModule,
-    AngularFireAuthModule,
-    AngularFireModule,
     BrowserAnimationsModule,
     MaterialModule,
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [BaseService],
+  providers: [ModelBD],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

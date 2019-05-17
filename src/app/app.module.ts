@@ -19,6 +19,9 @@ import { CrearSolicitudComponent } from './layout/crear-solicitud/crear-solicitu
 import { AvisosPublicadosComponent } from './layout/avisos-publicados/avisos-publicados.component';
 import { SolicitudesComponent } from './layout/solicitudes/solicitudes.component';
 import { PerfilComponent } from './layout/perfil/perfil.component';
+import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireDatabaseModule, AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+import { AngularFireModule } from 'angularfire2';
 
 
 @NgModule({
@@ -37,6 +40,9 @@ import { PerfilComponent } from './layout/perfil/perfil.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    AngularFireDatabaseModule,
+    AngularFireAuthModule,
+    AngularFireModule,
     BrowserAnimationsModule,
     MaterialModule,
     ReactiveFormsModule,

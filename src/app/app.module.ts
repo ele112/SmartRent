@@ -7,7 +7,6 @@ import { HeaderComponent } from './layout/header/header.component';
 import { HomeListComponent } from './layout/home-list/home-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
-import { environment } from '../environments/environment';
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { MenuComponent } from './layout/menu/menu.component';
 import { PublicarAvisoComponent } from './layout/publicar-aviso/publicar-aviso.component';
@@ -17,6 +16,10 @@ import { AvisosPublicadosComponent } from './layout/avisos-publicados/avisos-pub
 import { SolicitudesComponent } from './layout/solicitudes/solicitudes.component';
 import { PerfilComponent } from './layout/perfil/perfil.component';
 import {ModelBD} from './service/modelBD';
+
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { environment } from '../environments/environment';
 
 
 @NgModule({
@@ -35,10 +38,14 @@ import {ModelBD} from './service/modelBD';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     MaterialModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    
   ],
   providers: [ModelBD],
   bootstrap: [AppComponent]

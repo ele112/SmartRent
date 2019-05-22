@@ -15,7 +15,6 @@ import { CrearSolicitudComponent } from './layout/crear-solicitud/crear-solicitu
 import { AvisosPublicadosComponent } from './layout/avisos-publicados/avisos-publicados.component';
 import { SolicitudesComponent } from './layout/solicitudes/solicitudes.component';
 import { PerfilComponent } from './layout/perfil/perfil.component';
-import {ModelBD} from './service/modelBD';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';

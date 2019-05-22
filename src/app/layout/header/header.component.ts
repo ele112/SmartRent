@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {ModelBD} from '../../service/modelBD';
 
 @Component({
   selector: 'app-header',
@@ -9,8 +8,8 @@ import {ModelBD} from '../../service/modelBD';
 export class HeaderComponent implements OnInit {
   btnAccionModal:any;
   login:boolean = true;
-  constructor(public bd: ModelBD) { 
-    this.bd.getP();
+  constructor() { 
+
   }
 
   ngOnInit() {

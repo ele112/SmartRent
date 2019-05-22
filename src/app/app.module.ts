@@ -46,7 +46,7 @@ import { environment } from '../environments/environment';
     FormsModule,
     
   ],
-  providers: [ModelBD],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

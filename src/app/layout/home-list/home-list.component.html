@@ -2,27 +2,28 @@
 
 
     <mat-card class="centerWrapper" align="center">
+        <div class="ctnList">
 
-
-        <div class="row">
-            <div class="col-sm-12" align="left">
-                <label class="cSearch">Buscar</label>
+            <div class="row">
+                <div class="col-sm-12" align="left">
+                    <label class="cSearch">Buscar</label>
+                </div>
             </div>
-        </div>
 
-        <div class="row ctnBar" style="width: 90%;">
-            <div class="col-sm-3" align="left">
+            <div class="row ctnBar" style="width: 90%;">
+                
+                <div class="col-sm-12 col-md-4 col-xs-4" align="center">
 
-                <mat-form-field>
-                    <mat-label>Comuna</mat-label>
-                    <mat-select [(ngModel)]="comuna" (selectionChange)="comunaSelected(comuna)">
-                        <mat-option *ngFor="let item of comunas" [value]="item.id">
-                            {{item.nombre}}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
-            </div>
-            <div class="col-sm-3" align="left">
+                    <mat-form-field>
+                        <mat-label>Comuna</mat-label>
+                        <mat-select [(ngModel)]="comuna" (selectionChange)="comunaSelected(comuna)">
+                            <mat-option *ngFor="let item of comunas" [value]="item.id">
+                                {{item.nombre}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <!-- <div class="col-sm-3" align="center">
                 <mat-form-field style="width: 100%;">
                     <input matInput [matDatepicker]="picker" (focus)="picker.open()" placeholder="Fecha inicio">
                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -36,39 +37,43 @@
                     <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
                     <mat-datepicker #picker2></mat-datepicker>
                 </mat-form-field>
+            </div> -->
+                <div class="col-sm-12 col-md-4 col-xs-4" align="center">
+
+                    <mat-form-field>
+                        <mat-label>Tipo de vehiculo</mat-label>
+                        <mat-select>
+                            <mat-option *ngFor="let item of vehiculo" [value]="item.id">
+                                {{item.tipo}}
+                            </mat-option>
+
+                        </mat-select>
+                    </mat-form-field>
+
+                </div>
+                <div class="col-sm-12 col-md-4 col-xs-4" align="center">
+                    <button class="btn btn-primary " type="button">
+                        Buscar
+                    </button>
+                </div>
+
+
+
             </div>
-            <div class="col-sm-3">
-
-                <mat-form-field>
-                    <mat-label>Tipo de vehiculo</mat-label>
-                    <mat-select>
-                        <mat-option *ngFor="let item of vehiculo" [value]="item.id">
-                            {{item.tipo}}
-                        </mat-option>
-
-                    </mat-select>
-                </mat-form-field>
-
-            </div>
 
 
 
-        </div>
-        <button class="btn btn-primary btnSearch" type="button">
-            Buscar
-        </button>
 
-        <div class="ctnList">
-            
             <br>
             <div class="row">
-                <div class="col-sm-4" *ngFor="let item of dataIN; let i = index">
+                <div class="col-sm-12 col-md-4 col-xs-4" *ngFor="let item of dataIN; let i = index">
                     <mat-card class="cardList" (click)="solicitarArriendo()" [routerLink]="['/Ficha']">
-                        <img mat-card-image src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDfiRNAdAH4REu7H_i1BYBEkQtLBQ8SW0dgPAD1IFGrCNnNjMc">
+                        <img mat-card-image
+                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDfiRNAdAH4REu7H_i1BYBEkQtLBQ8SW0dgPAD1IFGrCNnNjMc">
                         <label class="marca">Kia</label><br>
                         <label class="modelo">Sorento</label>
                         <div class="row">
-                            <div class="col-sm-6" align="left" >
+                            <div class="col-sm-6" align="left">
                                 <label class="year">AÑO: 2015</label>
                             </div>
                             <div class="col-sm-6" align="right">
@@ -76,7 +81,7 @@
                             </div>
                         </div>
                         <div class="row foot">
-                            <div class="col-sm-6" align="left" >
+                            <div class="col-sm-6" align="left">
                                 <label for="">Detalle</label>
                             </div>
                             <div class="col-sm-6" align="right">
@@ -84,10 +89,10 @@
                             </div>
                         </div>
                     </mat-card>
-                    <br >
+                    <br>
                 </div>
             </div>
-            
+
             <!-- <div fxLayout='row' fxLayoutWrap fxLayoutGap="2rem">
                     <mat-card fxFlex.gt-md="20" fxFlex.md="28"  fxFlex.sm="40" fxFlex.xs="100" *ngFor="let recipe of dataIN"  class="recipe-card">
                       <mat-card-header>

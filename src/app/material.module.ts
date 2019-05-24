@@ -4,6 +4,9 @@ import {MatCardModule} from '@angular/material/card';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDatepickerModule, MatNativeDateModule, MatInputModule, MatFormFieldModule} from '@angular/material';
+import {MatStepperModule} from '@angular/material/stepper';
+import {MatButtonModule} from '@angular/material/button';
+import {MatRadioModule} from '@angular/material/radio';
 
 @NgModule({
     imports: [
@@ -14,7 +17,10 @@ import {MatDatepickerModule, MatNativeDateModule, MatInputModule, MatFormFieldMo
         MatDatepickerModule,
         MatNativeDateModule,
         MatInputModule,
-        MatFormFieldModule
+        MatFormFieldModule,
+        MatStepperModule,
+        MatButtonModule,
+        MatRadioModule
     ],
     exports: [
         MatToolbarModule,
@@ -24,7 +30,10 @@ import {MatDatepickerModule, MatNativeDateModule, MatInputModule, MatFormFieldMo
         MatDatepickerModule,
         MatNativeDateModule,
         MatInputModule,
-        MatFormFieldModule
+        MatFormFieldModule,
+        MatStepperModule,
+        MatButtonModule,
+        MatRadioModule
     ],
     providers: [ MatDatepickerModule ],
 })

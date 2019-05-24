@@ -40,3 +40,24 @@ export class solicitud{
     Comentarios = "";
     contacto = "";
 }
+
+
+export class ImageSnippet {
+    pending: boolean = false;
+    status: string = 'init';
+  
+    constructor(public src: string, public file: File) {}
+}
+  
+export class ImageUpload {
+    $key: string;
+    file: File;
+    name: string;
+    url: string;
+    progress: number;
+    createdAt: Date = new Date();
+
+    constructor(file: File){
+        this.file = file;
+    }
+}

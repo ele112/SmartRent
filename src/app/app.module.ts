@@ -19,6 +19,7 @@ import { PerfilComponent } from './layout/perfil/perfil.component';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 
 import { environment } from '../environments/environment';
 import { FirebaseService } from './service/firebase.service';
@@ -42,6 +43,7 @@ import { FirebaseService } from './service/firebase.service';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
     AngularFireAuthModule,
+    AngularFireStorageModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MaterialModule,

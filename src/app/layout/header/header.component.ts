@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FirebaseService } from '../../service/firebase.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import { ImageSnippet } from '../../service/data-model';
+import { ImageSnippet, user} from '../../service/data-model';
 import {
   AngularFireStorage,
   AngularFireUploadTask
@@ -9,6 +9,8 @@ import {
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { tap, finalize } from 'rxjs/operators';
+declare var $: any;
+
 
 @Component({
   selector: 'app-header',
@@ -37,13 +39,12 @@ export class HeaderComponent implements OnInit {
   file2: any;
   file3: any;
 
-
-
   task: AngularFireUploadTask;
   percentage: Observable<number>;
   snapshot: Observable<any>;
   downloadURL: Observable<string>;
   isHovering: boolean;
+  progrees: any = '';
 
   constructor(public fire: FirebaseService, 
           private storage: AngularFireStorage,
@@ -53,9 +54,14 @@ export class HeaderComponent implements OnInit {
     this.fire.logoutFirebase();
     // this.fire.createUserAccount('ele.alfonso112@gmail.com', '123456');
     // this.fire.stateLogin();
+
+    setTimeout(() => {
+      $('#exampleModal').modal('hide');
+    }, 4000)
   }
 
   ngOnInit() {
+    this.progrees = 'Subiendo imágenes...';
     this.firstFormGroup = this.createMyForm();
     this.secondFormGroup = this.createMyform2();
 
@@ -155,18 +161,39 @@ export class HeaderComponent implements OnInit {
 
 
   create(l,a,c){
+    this.progrees = 'Registrando usuario...';
+
     console.log(l);
     console.log(a)
-    console.log(c)
+    console.log(c);
+
+    let data = this.firstFormGroup.value;
+    let us = new user();
+    us.tipo =  data["tipo"];
+    us.name = data["name"];
+    us.rut = data["rut"];
+    us.direccion = data["direccion"];
+    us.celular = data["cel"];
+    us.correo = data["email"];
+    us.pass = data["pass"];
+    us.licencia = l;
+    us.antecedentes = a;
+    us.carnet = c;
+
+    this.fire.register(us).then((data) => {
+      console.log(data);
+      this.progrees = 'Login usuario...';
+      //USUARIO CREADO, Falta hacer el login y cambiar ventanas
+
+      // this.fire.loginInFirebase(data['email'], data["pass"])
+
+    });
+    
 
   }
 
   uploadImages(file1: any, file2: any, file3: any){
-    // Client-side validation example
-    // if (file.type.split('/')[0] !== 'image') {
-    //   console.error('unsupported file type :( ');
-    //   return;
-    // }
+
     let user = this.firstFormGroup.value["email"];
 
     const path1 = `photos/DocUser/${user}${new Date().getTime()}_${'Licencia'}`;
@@ -231,6 +258,7 @@ export class HeaderComponent implements OnInit {
       email: ['', Validators.required],
       cel: ['', Validators.required],
       pass: ['', Validators.required],
+      direccion: ['']
 
     });
 
@@ -245,6 +273,16 @@ export class HeaderComponent implements OnInit {
   nextSubmit(){
     let a = this.firstFormGroup.value;
     console.log(a);
+    
+    // this.usuario = { tipo: '', name: '', rut: '', correo: '', celular: '', direccion: '',
+    //  pass: '', licencia: '', antecedentes: '', carnet: ''};
+
+    // this.usuario.;
+    // let us = new user();
+    // us.tipo = "HOLA";
+    // console.log(us);
+  
+    // this.fire.register(us);
   }
 
 

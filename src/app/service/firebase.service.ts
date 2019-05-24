@@ -2,7 +2,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
-
+// import {} from '';
 @Injectable()
 export class FirebaseService {
 
@@ -35,6 +35,23 @@ export class FirebaseService {
         })
     }
 
+    register(user){
+       console.log(user)
+        return this.db.collection('users').add({
+            type: user.tipo,
+            name: user.name,
+            rut: user.rut,
+            mail: user.correo,
+            phone: user.celular,
+            address: user.direccion,
+            passwd: user.pass,
+            URL_licencia: user.licencia,
+            URL_antecedentes: user.antecedentes,
+            URL_carnet: user.carnet
+        })
+    }
+
+    
     getLoginUser(){
         // Retorna si el login es correcto
         

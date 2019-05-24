@@ -1,14 +1,16 @@
 export class user{
-    tipo = "";
-    name = "";
-    rut = "";
-    correo = "";
-    celular = "";
-    direccion = "";
-    pass = "";
-    licencia = "";
-    antecedentes = "";
-    carnet = "";
+    tipo: string;
+    name: string;
+    rut: string;
+    correo: string;
+    celular: string;
+    direccion: string;
+    pass: string;
+    licencia: string;
+    antecedentes: string;
+    carnet: string;
+
+    constructor(){ }
 }
 
 export class publicacion{

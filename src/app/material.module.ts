@@ -7,6 +7,7 @@ import {MatDatepickerModule, MatNativeDateModule, MatInputModule, MatFormFieldMo
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatButtonModule} from '@angular/material/button';
 import {MatRadioModule} from '@angular/material/radio';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
     imports: [
@@ -20,7 +21,8 @@ import {MatRadioModule} from '@angular/material/radio';
         MatFormFieldModule,
         MatStepperModule,
         MatButtonModule,
-        MatRadioModule
+        MatRadioModule,
+        MatProgressSpinnerModule
     ],
     exports: [
         MatToolbarModule,
@@ -33,7 +35,8 @@ import {MatRadioModule} from '@angular/material/radio';
         MatFormFieldModule,
         MatStepperModule,
         MatButtonModule,
-        MatRadioModule
+        MatRadioModule,
+        MatProgressSpinnerModule
     ],
     providers: [ MatDatepickerModule ],
 })

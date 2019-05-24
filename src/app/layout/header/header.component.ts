@@ -33,10 +33,17 @@ export class HeaderComponent implements OnInit {
   selectedFile2: ImageSnippet;
   selectedFile3: ImageSnippet;
 
+  file1: any;
+  file2: any;
+  file3: any;
+
+
+
   task: AngularFireUploadTask;
   percentage: Observable<number>;
   snapshot: Observable<any>;
   downloadURL: Observable<string>;
+  isHovering: boolean;
 
   constructor(public fire: FirebaseService, 
           private storage: AngularFireStorage,
@@ -54,17 +61,45 @@ export class HeaderComponent implements OnInit {
 
   } 
 
-  processFile(imageInput: any, selected) {
+  startUpload(event: FileList){
+
+    console.log(event.item(0))
+    const file: File = event.item(0);
+    const _reader = new FileReader();
+
+    console.log("Fuera del reader")
+    this.selectedFile1 = new ImageSnippet('', file);
+    this.selectedFile1.pending = true;
+    let base = _reader.result;
+    console.log(base)
+    // reader.addEventListener('load', (event: any) => {
+      // console.log("EN");
+      // this.selectedFile1 = new ImageSnippet(event.target.result, file);
+      // this.selectedFile1.pending = true;
+
+      // let base64 = reader.result;
+      // console.log(base64)
+
+      // this.imgURL1 = base64;
+    // });
+
+  }
+
+
+  processFile(_event: FileList, imageInput: any, selected) {
     if( imageInput.files[0] != undefined ){
       const file: File = imageInput.files[0];
       const reader = new FileReader();
   
-      reader.addEventListener('load', (event: any) => {
-  
+     reader.addEventListener('load', (event: any) => {
+        console.log(event.result)
         
         if(selected == '1'){
+        
           this.selectedFile1 = new ImageSnippet(event.target.result, file);
           this.selectedFile1.pending = true;
+
+          this.file1 = _event.item(0);
     
           let base64 = reader.result;
           console.log(this.selectedFile1.file);
@@ -74,12 +109,18 @@ export class HeaderComponent implements OnInit {
           this.selectedFile2 = new ImageSnippet(event.target.result, file);
           this.selectedFile2.pending = true;
     
+          this.file2 = _event.item(0);
+
+
           let base64 = reader.result;
 
           this.imgURL3 = base64;       
         }else{
           this.selectedFile3 = new ImageSnippet(event.target.result, file);
           this.selectedFile3.pending = true;
+
+          this.file3 = _event.item(0);
+
     
           let base64 = reader.result;
 
@@ -97,22 +138,90 @@ export class HeaderComponent implements OnInit {
   
   }
 
+
   createAccount(){
 
     // Subir archivos a firebaseStorage
 
+    if(this.file1 != undefined && this.file2 != undefined && this.file3 != undefined){
+      this.uploadImages(this.file1, this.file2, this.file3);
+    }else{
+      
+    }
 
 
 
   }
 
 
-  uploadImages(){
+  create(l,a,c){
+    console.log(l);
+    console.log(a)
+    console.log(c)
+
+  }
+
+  uploadImages(file1: any, file2: any, file3: any){
+    // Client-side validation example
+    // if (file.type.split('/')[0] !== 'image') {
+    //   console.error('unsupported file type :( ');
+    //   return;
+    // }
+    let user = this.firstFormGroup.value["email"];
+
+    const path1 = `photos/DocUser/${user}${new Date().getTime()}_${'Licencia'}`;
+    const path2 = `photos/DocUser/${user}${new Date().getTime()}_${'Antecedentes'}`;
+    const path3 = `photos/DocUser/${user}${new Date().getTime()}_${'Carnet'}`;
+
+    let task1 = this.storage.upload(path1, file1);
+    let task2 = this.storage.upload(path2, file2);
+    let task3 = this.storage.upload(path3, file3);
+
+
+    this.percentage = task3.percentageChanges();
+
+    task1.then(() => {
+
+      this.storage.ref(path1).getDownloadURL().subscribe(licencia => {
+        
+        task2.then(() => {
+          this.storage.ref(path2).getDownloadURL().subscribe(antecedentes => {
+            task3.then(() => {
+
+              this.storage.ref(path3).getDownloadURL().subscribe(carnet => {
+                this.create(licencia,antecedentes,carnet);
+
+
+              });
+        
+            });
+
+
+          });
+    
+        });
+
+
+      });
+
+    });
+
+
+
     
 
-
+  }
+  // Determines if the upload task is active
+  isActive(snapshot) {
+    return (
+      snapshot.state === 'running' &&
+      snapshot.bytesTransferred < snapshot.totalBytes
+    );
   }
 
+  toggleHover(event: boolean) {
+    this.isHovering = event;
+  }
 
   private createMyForm() {
     return this._formBuilder.group({

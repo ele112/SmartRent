@@ -150,13 +150,49 @@
 
             <div class="row" align="center">
               <div class="col-sm-6">
+                  <!-- <div class="dropzone" dropZone (hovered)="toggleHover($event)"
+                        (dropped)="processFile($event, '1')" [class.hovering]="isHovering">
+
+                  
+                      <div class="file"  *ngIf="!selectedFile1">
+                          <h3>AngularFire Drop Zone</h3>
+                          <p>Drag and Drop a File</p>
+                        <label class="file-label">
+                    
+                    
+                          <input class="file-input" #imageInput1
+                          type="file"
+                          accept="image/*"
+                          (change)="processFile($event.target.files, imageInput1, '1')">
+                    
+                          <span class="file-cta">
+                            <span class="file-icon">
+                              <i class="fa fa-upload"></i>
+                            </span>
+                            <span class="file-label">
+                              or choose a file…
+                            </span>
+                          </span>
+                        </label>
+
+                      </div>
+
+                      <div *ngIf="selectedFile1" class="img-preview-container">
+                          <div class="img-preview{{selectedFile1.status === 'fail' ? '-error' : ''}}"
+                              [ngStyle]="{'background-image': 'url('+ selectedFile1.src + ')'}">
+                           </div>
+                       </div>
+
+
+                    </div> -->
+                
                 <label for="">Adjuntar Licencia</label><br>
 
                 <label class="image-upload-container btn btn-bwm">
                   <input #imageInput1
                          type="file"
                          accept="image/*"
-                         (change)="processFile(imageInput1, '1')">
+                         (change)="processFile($event.target.files, imageInput1, '1')">
                 </label>
 
                 <div *ngIf="selectedFile1" class="img-preview-container">
@@ -174,7 +210,7 @@
                     <input #imageInput2
                            type="file"
                            accept="image/*"
-                           (change)="processFile(imageInput2, '2')">
+                           (change)="processFile($event.target.files, imageInput2, '2')">
                   </label>
   
                   <div *ngIf="selectedFile2" class="img-preview-container">
@@ -193,7 +229,7 @@
                     <input #imageInput3
                            type="file"
                            accept="image/*"
-                           (change)="processFile(imageInput3, '3')">
+                           (change)="processFile($event.target.files, imageInput3, '3')">
                   </label>
   
                   <div *ngIf="selectedFile3" class="img-preview-container">
@@ -207,13 +243,28 @@
 
             <div>
               <button mat-button matStepperPrevious>Back</button>
-              <button mat-button matStepperNext>Next</button>
+              <button mat-button matStepperNext (click)="createAccount()">Next</button>
             </div>
           </form>
         </mat-step>
         <mat-step>
           <ng-template matStepLabel>Validacion</ng-template>
-          You are now done.
+          <!-- You are now done. -->
+
+                    
+          <div *ngIf="percentage | async as pct">
+
+              <progress class="progress is-info" [value]="pct" max="100">
+              </progress>
+            
+              {{ pct | number }}%
+            
+            </div>
+            
+            
+            
+
+
           <div>
             <button mat-button matStepperPrevious>Back</button>
             <button mat-button (click)="stepper.reset()">Reset</button>

@@ -3,67 +3,68 @@
 
         <div class="body" align="center">
 
+            <mat-card class="head-card" align="center">
+
+                <div class="row">
+                    <div class="col-sm-12" align="left">
+                        <label class="cSearch">Buscar</label>
+                    </div>
+                </div>
+
+                <div class="row ctnBar" style="width: 90%;" align="center">
+
+                    <div class="col-sm-12 col-md-4 col-xs-4" >
+
+                        <mat-form-field>
+                            <mat-label>Comuna</mat-label>
+                            <mat-select [(ngModel)]="comuna" (selectionChange)="comunaSelected(comuna)">
+                                <mat-option *ngFor="let item of comunas" [value]="item.id">
+                                    {{item.nombre}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <!-- <div class="col-sm-3" align="center">
+                                <mat-form-field style="width: 100%;">
+                                    <input matInput [matDatepicker]="picker" (focus)="picker.open()" placeholder="Fecha inicio">
+                                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker></mat-datepicker>
+                                </mat-form-field>
+                            </div>
+                
+                            <div class="col-sm-3">
+                                <mat-form-field style="width: 100%;">
+                                    <input matInput [matDatepicker]="picker2" (focus)="picker.open()" placeholder="Fecha entrega">
+                                    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker2></mat-datepicker>
+                                </mat-form-field>
+                            </div> -->
+                    <div class="col-sm-12 col-md-4 col-xs-4" align="center">
+
+                        <mat-form-field>
+                            <mat-label>Tipo de vehiculo</mat-label>
+                            <mat-select>
+                                <mat-option *ngFor="let item of vehiculo" [value]="item.id">
+                                    {{item.tipo}}
+                                </mat-option>
+
+                            </mat-select>
+                        </mat-form-field>
+
+                    </div>
+                    <div class="col-sm-12 col-md-4 col-xs-4" align="center">
+                        <button class="btn btn-primary " type="button">
+                            Buscar
+                        </button>
+                    </div>
+
+
+
+                </div>
+            </mat-card>
+            <br><br>
             <mat-card class="centerWrapper" align="center">
                 <div class="ctnList">
-
-                    <div class="row">
-                        <div class="col-sm-12" align="left">
-                            <label class="cSearch">Buscar</label>
-                        </div>
-                    </div>
-
-                    <div class="row ctnBar" style="width: 90%;">
-
-                        <div class="col-sm-12 col-md-4 col-xs-4" align="center">
-
-                            <mat-form-field>
-                                <mat-label>Comuna</mat-label>
-                                <mat-select [(ngModel)]="comuna" (selectionChange)="comunaSelected(comuna)">
-                                    <mat-option *ngFor="let item of comunas" [value]="item.id">
-                                        {{item.nombre}}
-                                    </mat-option>
-                                </mat-select>
-                            </mat-form-field>
-                        </div>
-                        <!-- <div class="col-sm-3" align="center">
-                                    <mat-form-field style="width: 100%;">
-                                        <input matInput [matDatepicker]="picker" (focus)="picker.open()" placeholder="Fecha inicio">
-                                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                                        <mat-datepicker #picker></mat-datepicker>
-                                    </mat-form-field>
-                                </div>
-                    
-                                <div class="col-sm-3">
-                                    <mat-form-field style="width: 100%;">
-                                        <input matInput [matDatepicker]="picker2" (focus)="picker.open()" placeholder="Fecha entrega">
-                                        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-                                        <mat-datepicker #picker2></mat-datepicker>
-                                    </mat-form-field>
-                                </div> -->
-                        <div class="col-sm-12 col-md-4 col-xs-4" align="center">
-
-                            <mat-form-field>
-                                <mat-label>Tipo de vehiculo</mat-label>
-                                <mat-select>
-                                    <mat-option *ngFor="let item of vehiculo" [value]="item.id">
-                                        {{item.tipo}}
-                                    </mat-option>
-
-                                </mat-select>
-                            </mat-form-field>
-
-                        </div>
-                        <div class="col-sm-12 col-md-4 col-xs-4" align="center">
-                            <button class="btn btn-primary " type="button">
-                                Buscar
-                            </button>
-                        </div>
-
-
-
-                    </div>
-
-
 
 
                     <br>

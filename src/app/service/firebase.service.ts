@@ -12,21 +12,16 @@ export class FirebaseService {
     }
 
     loginInFirebase(email, pass){
-        this.auth.auth.signInWithEmailAndPassword(email, pass).then(data => {
-            console.log(data)
-        });
+        return this.auth.auth.signInWithEmailAndPassword(email, pass);
     }
 
     logoutFirebase(){
-        this.auth.auth.signOut().then(data => {
-            console.log(data)
-        });
+        return this.auth.auth.signOut();
     }
 
     createUserAccount(user, pass){
-        this.auth.auth.createUserWithEmailAndPassword(user, pass).then(data => {
-            console.log(data)
-        });
+        return this.auth.auth.createUserWithEmailAndPassword(user, pass);
+    
     }
 
     stateLogin(){
@@ -84,6 +79,10 @@ export class FirebaseService {
     getUsersForEmail(email: any){
         // Devuelve un usuario buscado por el email, con el fin de obtener su id
         
+    }
+    getUsers(){
+
+        return this.db.collection('/users').snapshotChanges();
     }
 
     setNewPublicationInUser(pub){

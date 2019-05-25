@@ -25,6 +25,7 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 
 import { environment } from '../environments/environment';
 import { FirebaseService } from './service/firebase.service';
+import { LoginComponent } from './layout/login/login.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { FirebaseService } from './service/firebase.service';
     SolicitudesComponent,
     PerfilComponent,
     DropZoneDirective,
-    FileSizePipe
+    FileSizePipe,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

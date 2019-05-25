@@ -1,5 +1,5 @@
-<app-header></app-header>
-<app-menu ></app-menu>
+<app-header [hidden]="!panel"></app-header>
+<app-menu [hidden]="!panel"></app-menu>
 
 <router-outlet></router-outlet>
 <script src="./assets/js/app.min.js"></script>

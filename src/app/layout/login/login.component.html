@@ -1,0 +1,215 @@
+<div class="login-content">
+
+  <div class="lc-block toggled" id="l-login" align="center">
+
+    <mat-card class="wrapped-login" *ngIf="login">
+
+        <div>
+          <img src="../../../assets/img/man.png" class="image-man" /><br>
+          <p class="font-text-title">Iniciar sesion</p><br><br>
+
+          <form [formGroup]="loginFormGroup" class="login100-form validate-form posit">
+              <div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
+                <span class="label-input100 lab">Usuario</span>
+                <input class="input100" type="text" name="username" 
+                placeholder="Ingrese nombre de usuario" formControlName="email" required>
+                <span class="focus-input100"></span>
+              </div>
+      
+              <div class="wrap-input100 validate-input m-b-18" data-validate="Password is required">
+                <span class="label-input100 lab">Contraseña</span>
+                <input class="input100" type="password" name="pass" 
+                placeholder="Ingrese Contraseña" formControlName="pass" required>
+                <span class="focus-input100"></span>
+              </div>
+              <br>
+              <button class="btn btn-success" (click)="iniciarSesion()">
+                  Iniciar sesion
+                </button> 
+                <button class="btn btn-outline" (click)="registro()">
+                    Registrarse
+                  </button>
+     
+          </form>
+        </div>
+
+    </mat-card>
+
+    <mat-card class="wrapped-register" *ngIf="!login">
+
+        <div class="headerModal" align="center">
+            <label class="fntCreate">Crear cuenta</label>
+        </div>
+          <br>
+          <mat-horizontal-stepper [linear]="true" #stepper>
+    
+            <mat-step [stepControl]="firstFormGroup">
+              <form [formGroup]="firstFormGroup">
+    
+                <ng-template matStepLabel>Datos de usuario</ng-template>
+    
+       
+                <div class="row">
+                  <div class="col-sm-6" align="center">
+                      <mat-radio-group aria-label=""  formControlName="tipo" required>
+                          <label for="">Soy&nbsp;&nbsp;</label>
+                          <mat-radio-button value="empresa">Empresa</mat-radio-button>&nbsp;
+                          <mat-radio-button value="usuario">Usuario</mat-radio-button>
+                      </mat-radio-group>
+                  </div>
+                </div>
+    
+                <div class="row">
+                  <div class="col-sm-6" align="center">
+                    <mat-form-field>
+                      <input matInput placeholder="Nombre completo" formControlName="name" required>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-sm-6" align="center">
+                    <mat-form-field>
+                      <input matInput placeholder="Rut" maxlength="9" formControlName="rut" required>
+                    </mat-form-field>
+                  </div>
+                </div>
+    
+                <div class="row">
+                  <div class="col-sm-6" align="center">
+                    <mat-form-field>
+                      <input matInput placeholder="Direccion" formControlName="direccion">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-sm-6" align="center">
+                    <mat-form-field>
+                      <input matInput placeholder="Celular" formControlName="cel" required>
+                    </mat-form-field>
+                  </div>
+                </div>
+    
+                <div class="row">
+                  <div class="col-sm-6" align="center">
+                    <mat-form-field>
+                      <input matInput placeholder="Correo" type="email" formControlName="email" required>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-sm-6"align="center">
+                      <mat-form-field>
+                        <input matInput placeholder="Contraseña" minlength="6" type="password" formControlName="pass" required>
+                      </mat-form-field>
+                  </div>
+                </div>
+    
+                <div class="row">
+                  <div class="col-sm-12" align="center" >
+                      <button mat-button matStepperNext >Siguiente</button>
+    
+                  </div>
+                </div>
+    
+              </form>
+            </mat-step>
+    
+            <mat-step [stepControl]="secondFormGroup">
+    
+    
+              <form [formGroup]="secondFormGroup">
+    
+                <ng-template matStepLabel>Documentos de usuario</ng-template>
+    
+                <div class="row" align="center">
+                  <div class="col-sm-6">                  
+                  <label for="">Adjuntar Licencia</label><br>
+    
+                    <label class="image-upload-container btn btn-bwm">
+                      <input #imageInput1
+                             type="file"
+                             accept="image/*"
+                             (change)="processFile($event.target.files, imageInput1, '1')">
+                    </label>
+    
+                    <div *ngIf="selectedFile1" class="img-preview-container">
+                       <div class="img-preview{{selectedFile1.status === 'fail' ? '-error' : ''}}"
+                           [ngStyle]="{'background-image': 'url('+ selectedFile1.src + ')'}">
+                        </div>
+                    </div>
+    
+    
+    
+                  </div>
+                  <div class="col-sm-6">
+                    <label for="">Adjuntar Certificado Antecedentes</label><br>
+                    <label class="image-upload-container btn btn-bwm">
+                        <input #imageInput2
+                               type="file"
+                               accept="image/*"
+                               (change)="processFile($event.target.files, imageInput2, '2')">
+                      </label>
+      
+                      <div *ngIf="selectedFile2" class="img-preview-container">
+                         <div class="img-preview{{selectedFile2.status === 'fail' ? '-error' : ''}}"
+                             [ngStyle]="{'background-image': 'url('+ selectedFile2.src + ')'}">
+                          </div>
+                      </div>
+    
+                  </div>
+    
+                </div>
+                <div class="row" align="center">
+                  <div class="col-sm-12">
+                    <label for="">Adjuntar Carnet identidad</label><br>
+                    <label class="image-upload-container btn btn-bwm">
+                        <input #imageInput3
+                               type="file"
+                               accept="image/*"
+                               (change)="processFile($event.target.files, imageInput3, '3')">
+                      </label>
+      
+                      <div *ngIf="selectedFile3" class="img-preview-container">
+                         <div class="img-preview{{selectedFile3.status === 'fail' ? '-error' : ''}}"
+                             [ngStyle]="{'background-image': 'url('+ selectedFile3.src + ')'}">
+                          </div>
+                      </div>
+                  </div>
+                </div>
+    
+    
+                <div>
+                  <button mat-button matStepperPrevious>Back</button>
+                  <button mat-button matStepperNext (click)="createAccount()">Next</button>
+                </div>
+              </form>
+            </mat-step>
+            <mat-step>
+              <ng-template matStepLabel>Validacion</ng-template>
+              <!-- You are now done. -->
+    
+              <div class="verify">
+    
+                <div style="width: 100%" align="center">
+                    <mat-spinner></mat-spinner><br>
+                    <label class="fntLoad">{{progrees}}</label>
+                </div>
+      
+    
+              </div>                  
+      
+    
+    
+              <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button (click)="stepper.reset()">Reset</button>
+              </div>
+            </mat-step>
+          </mat-horizontal-stepper>
+    
+
+    </mat-card>
+   
+            <!-- <p>
+                login works!
+              </p>
+              <button type="button" [routerLink]="['/Home']">GO home</button> -->
+
+  </div>
+
+
+</div>

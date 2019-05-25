@@ -65,7 +65,9 @@ export class HeaderComponent implements OnInit {
     //Display Text por sesion
     let item = localStorage.getItem('userSession');
     console.log(item)
-
+    if(item == null){
+      
+    }
 
 
   } 

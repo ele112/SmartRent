@@ -1,40 +1,9 @@
-.sp-pic{
-    background: url('../../../assets/img/man.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    width: 110px;
-    height: 110px;
-    // -webkit-box-shadow: 0px 0px 35px -25px rgba(0,0,0,0.75);
-
-}
-.positionPic{
-    width: 100% !important;
-    height: 87%;
-    display: flex;
-    align-content: center;
-    align-items: center;
-    justify-content: center;
-
-}
-.picture{
-    height: 250px;
-}
-
-._shadow{
-    -webkit-box-shadow: 0px 0px 35px -25px rgba(0,0,0,0.75);
-
-}
-._menu-display{
-    // border-top: 1px solid red;  
-    margin-top: -20%;
-}
-
-
-
-
 
 //Modal login y registro
 
+.font-text-title{
+    font-size: 25px;
+}
 
 span {
     padding-right: 12px;
@@ -42,7 +11,31 @@ span {
     color: aliceblue;
 }
 
+.wrapped-login{
+    -webkit-box-shadow: 0px 0px 35px -25px rgba(0,0,0,0.75);
+    border-radius: 10px;
+    width: 50%;
+    justify-content: center;
 
+}
+
+.wrapped-register{
+    -webkit-box-shadow: 0px 0px 35px -25px rgba(0,0,0,0.75);
+    border-radius: 10px;
+   
+}
+.lc-block {
+    max-width: 1000px;
+}
+
+
+.image-man{
+    width: 100px;
+    height: 100px;;
+}
+.posit{
+    margin-top: -10%;
+}
 .lab{
     color: #000000;
 }

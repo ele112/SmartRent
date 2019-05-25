@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SharedService } from '../../shared/shared.service';
+import { FirebaseService } from '../../service/firebase.service';
 
 @Component({
   selector: 'app-menu',
@@ -7,9 +9,48 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  constructor() { }
+  public UserName: any;
+  login:boolean;
+  constructor(private sharedService:SharedService, public fire: FirebaseService, ) { }
 
   ngOnInit() {
+    this.UserName = 'Invitado';
+    this.login = false;
+    this.verifyStorage();
+    this.sharedService.statusLogIn.subscribe((data) => {
+      if (data['status'] != null && data['status'] == 'login'){
+        this.login = true;
+        this.UserName = data['name'];
+      }else{
+        this.login = false;
+      }
+  
+    });
+  }
+
+  verifyStorage(){
+    let logIn = localStorage.getItem('userLoged');
+    let name = localStorage.getItem('userName');
+    console.log(logIn);
+    console.log(name)
+    if (logIn != null && logIn == 'login'){
+      this.login = true;
+      this.UserName = name;
+    }else{
+      this.login = false;
+    }
+  }
+
+  closeSesion(){
+    this.fire.logoutFirebase().then(data => {
+      console.log(data);
+      localStorage.setItem('userLoged', null);
+      localStorage.setItem('userName', null);
+
+      location.reload();
+
+    })
+
   }
 
 }

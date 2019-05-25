@@ -89,6 +89,7 @@ export class HomeListComponent implements OnInit {
   }
 
   ngOnInit() {
+    
   }
 
   comunaSelected(comuna){

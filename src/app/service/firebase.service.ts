@@ -48,9 +48,9 @@ export class FirebaseService {
 
     
     getLoginUser(){
-        // Retorna si el login es correcto
-        
+        return this.db.collection("/users").get();
     }
+
 
     getPublicactionForUser(id){
         // Recibe el ID del usuario y devuelve todas las solicitudes realizadas por usuario.
@@ -76,10 +76,6 @@ export class FirebaseService {
 
     }
 
-    getUsersForEmail(email: any){
-        // Devuelve un usuario buscado por el email, con el fin de obtener su id
-        
-    }
     getUsers(){
 
         return this.db.collection('/users').snapshotChanges();

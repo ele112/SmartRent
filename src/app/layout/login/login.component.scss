@@ -11,10 +11,28 @@ span {
     color: aliceblue;
 }
 
+@media only screen and (max-width: 660px) {
+    .wrapped-login{
+        width: 98% !important;
+    }
+
+    .wrapped-register{
+
+    }
+}
+// @media only screen and  (min-width: 660px) and (max-width: 1020px) {
+//     .wrapped-login{
+//         width: 80% !important;
+//     }
+
+//     .wrapped-register{
+
+//     }
+// }
 .wrapped-login{
     -webkit-box-shadow: 0px 0px 35px -25px rgba(0,0,0,0.75);
     border-radius: 10px;
-    width: 50%;
+    width: 500px;
     justify-content: center;
 
 }

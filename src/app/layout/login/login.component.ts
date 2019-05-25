@@ -31,20 +31,17 @@ export class LoginComponent implements OnInit {
   file2: any;
   file3: any;
 
+  spinner: any;
   constructor(private sharedService:SharedService, 
           private _formBuilder: FormBuilder,
           public fire: FirebaseService, 
           private storage: AngularFireStorage,
           private route: ActivatedRoute,
           private router: Router,
-          private db: AngularFirestore, ) {
-            // this.fire.getUsers().subscribe((data) => {
-            //   console.log(data);
-            //   console.log(data['payload'].['doc'].data())
-            // })
-  }
+          private db: AngularFirestore, ) {  }
 
   ngOnInit() {
+    this.spinner = false;
     this.sharedService.statusPanel.next(false);
     this.login = true;
     this.firstFormGroup = this.createForm1();
@@ -227,15 +224,47 @@ export class LoginComponent implements OnInit {
   }
 
   iniciarSesion(){
-    let data = this.loginFormGroup.value;
-    this.fire.loginInFirebase(data['email'], data['pass']).then(user => {
-      console.log(user);
-      console.log(user['uid']);
+    let self = this;
+    this.spinner = true;
+    let formData = this.loginFormGroup.value;
+    console.log(formData);
+    this.fire.getLoginUser().subscribe(function (querySnapshot) {
+      let existe = 0;
+      querySnapshot.forEach(function (doc) {
+        // console.log(doc.id, " => ", doc.data());
+        let data = doc.data();
+        if (data['mail'] == formData['email']) {
+          console.log("Encontrado");
+          existe = 1;
 
-      // this.fire.getAllPublications
+          if(data['passwd'] == formData['pass']){
+            
+            self.fire.loginInFirebase(formData['email'], formData['pass']).then(user => {
+              self.spinner = false;
+              let log = {status: 'login', name: data['name']};
+              self.sharedService.statusLogIn.next(log);
+              localStorage.setItem('userLoged', 'login');
+              localStorage.setItem('userName', data['name']);
+              self.router.navigate(['/Home']);
+              
+            }, (err) => {
+              console.log('Hay una sesion abierta');
+            });
+            
+          }else{
+            swal('','La contraseña ingresada no es valida','info')
+          }
+        }
+      });
+      if (existe == 0) {
+        self.spinner = false;
+        swal('Usuario no existe', '');
+      }
+
+    });;
 
 
-    })
+
   }
 
 

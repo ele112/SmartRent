@@ -31,6 +31,11 @@
                   </button>
      
           </form>
+          <div class="preloader pls-red p-t-5 preloadersLogin" *ngIf="spinner">
+            <svg class="pl-circular" viewBox="25 25 50 50">
+            <circle class="plc-path" cx="50" cy="50" r="20"/>
+            </svg>
+        </div>
         </div>
 
     </mat-card>
@@ -38,7 +43,7 @@
     <mat-card class="wrapped-register" *ngIf="!login">
 
         <div class="headerModal" align="center">
-            <label class="fntCreate">Crear cuenta</label>
+          <p class="font-text-title">Crear cuenta</p>
         </div>
           <br>
           <mat-horizontal-stepper [linear]="true" #stepper>
@@ -100,7 +105,10 @@
     
                 <div class="row">
                   <div class="col-sm-12" align="center" >
-                      <button mat-button matStepperNext >Siguiente</button>
+                      <button mat-button matStepperNext color="primary">
+                        Siguiente
+                       <i class="zmdi zmdi-chevron-right zmdi-hc-2x"></i>
+                      </button>
     
                   </div>
                 </div>
@@ -109,16 +117,11 @@
             </mat-step>
     
             <mat-step [stepControl]="secondFormGroup">
-    
-    
               <form [formGroup]="secondFormGroup">
-    
                 <ng-template matStepLabel>Documentos de usuario</ng-template>
-    
                 <div class="row" align="center">
                   <div class="col-sm-6">                  
                   <label for="">Adjuntar Licencia</label><br>
-    
                     <label class="image-upload-container btn btn-bwm">
                       <input #imageInput1
                              type="file"
@@ -130,10 +133,7 @@
                        <div class="img-preview{{selectedFile1.status === 'fail' ? '-error' : ''}}"
                            [ngStyle]="{'background-image': 'url('+ selectedFile1.src + ')'}">
                         </div>
-                    </div>
-    
-    
-    
+                    </div>    
                   </div>
                   <div class="col-sm-6">
                     <label for="">Adjuntar Certificado Antecedentes</label><br>
@@ -171,44 +171,38 @@
                   </div>
                 </div>
     
-    
-                <div>
-                  <button mat-button matStepperPrevious>Back</button>
-                  <button mat-button matStepperNext (click)="createAccount()">Next</button>
+                
+                <div style="margin-top: 50px;">
+                  <button mat-button matStepperPrevious color="primary">
+                      <i class="zmdi zmdi-chevron-left zmdi-hc-2x"></i>
+                    Back
+                  </button>
+                  <button mat-button matStepperNext (click)="createAccount()" color="primary">
+                    Next
+                    <i class="zmdi zmdi-chevron-right zmdi-hc-2x"></i>
+                  </button>
                 </div>
               </form>
             </mat-step>
             <mat-step>
-              <ng-template matStepLabel>Validacion</ng-template>
-              <!-- You are now done. -->
-    
+              <ng-template matStepLabel>Validacion</ng-template>    
               <div class="verify">
     
                 <div style="width: 100%" align="center">
-                    <mat-spinner></mat-spinner><br>
+                    <!-- <mat-spinner color="warn"></mat-spinner><br> -->
+                    <div class="preloader pls-red p-t-5 preloadersLogin" style="width: 100px; height: 100px;">
+                        <svg class="pl-circular" viewBox="25 25 50 50">
+                        <circle class="plc-path" cx="50" cy="50" r="20"/>
+                        </svg>
+                    </div><br>
                     <label class="fntLoad">{{progrees}}</label>
                 </div>
       
     
               </div>                  
-      
-    
-    
-              <div>
-                <button mat-button matStepperPrevious>Back</button>
-                <button mat-button (click)="stepper.reset()">Reset</button>
-              </div>
             </mat-step>
           </mat-horizontal-stepper>
-    
-
     </mat-card>
-   
-            <!-- <p>
-                login works!
-              </p>
-              <button type="button" [routerLink]="['/Home']">GO home</button> -->
-
   </div>
 
 

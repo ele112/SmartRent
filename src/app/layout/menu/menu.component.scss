@@ -1,0 +1,26 @@
+.sp-pic{
+    background: url('../../../assets/img/racer.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 120px;
+    height: 120px;
+    // -webkit-box-shadow: 0px 0px 35px -25px rgba(0,0,0,0.75);
+
+}
+.positionPic{
+    width: 100% !important;
+    height: 100%;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+
+}
+.picture{
+    height: 250px;
+}
+
+.shadow{
+    -webkit-box-shadow: 0px 0px 35px -25px rgba(0,0,0,0.75);
+
+}

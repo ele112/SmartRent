@@ -6,6 +6,7 @@ import { FichaVehiculoComponent } from './layout/ficha-vehiculo';
 
 const routes: Routes = [
   { path: '', component: HomeListComponent},
+  { path: 'Home', component: HomeListComponent},
   { path: 'Ficha', component: FichaVehiculoComponent}
 
 ];

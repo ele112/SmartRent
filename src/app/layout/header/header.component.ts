@@ -55,9 +55,6 @@ export class HeaderComponent implements OnInit {
     // this.fire.createUserAccount('ele.alfonso112@gmail.com', '123456');
     // this.fire.stateLogin();
 
-    setTimeout(() => {
-      $('#exampleModal').modal('hide');
-    }, 4000)
   }
 
   ngOnInit() {
@@ -65,7 +62,21 @@ export class HeaderComponent implements OnInit {
     this.firstFormGroup = this.createMyForm();
     this.secondFormGroup = this.createMyform2();
 
+    //Display Text por sesion
+    let item = localStorage.getItem('userSession');
+    console.log(item)
+
+
+
   } 
+
+  closeModal(){
+    $(document).ready(function(){ 
+      $("#exampleModal").modal("hide");
+      $('body').removeClass('modal-open');
+      $('.modal-backdrop').remove();
+    });
+  }
 
   startUpload(event: FileList){
 

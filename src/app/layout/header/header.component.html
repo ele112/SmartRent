@@ -1,6 +1,6 @@
-<mat-toolbar class="navbar mat-elevation-z5" style="background: #222222">
+<!-- <mat-toolbar class="navbar mat-elevation-z5" style="background: #222222">
   <img src="../../../assets/img/logo.png" class="iconLGO" alt="">
-  <div>
+  <div *ngIf="mode == 'logOut'">
 
     <button type="button" (click)="predeterm()" class="btn btn-link" data-toggle="modal" data-target="#exampleModal">
       <span>Login</span>
@@ -8,7 +8,55 @@
 
     <span>Registro</span>
   </div>
-</mat-toolbar>
+  <div *ngIf="mode != 'logIn'">
+
+    <button type="button" [routerLink]="['/Home']">  
+      <span>Inicio</span>
+    </button>
+    <button type="button" (click)="closeAccount()">  
+      <span>Logout</span>
+    </button>
+
+    
+
+  </div>
+</mat-toolbar> -->
+
+<header id="header" class="clearfix" data-ma-theme="dark">
+    <ul class="h-inner">
+        <li class="hi-trigger ma-trigger" data-ma-action="sidebar-open" data-ma-target="#sidebar">
+            <div class="line-wrap">
+                <div class="line top"></div>
+                <div class="line center"></div>
+                <div class="line bottom"></div>
+            </div>
+        </li>
+  
+        <li class="hi-logo hidden-xs">
+            <a href="./home" class="p-t-0">
+                <img src="../../../assets/img/logo.png" width="115" height="35" alt=""/>
+            </a>
+        </li>        
+  
+        <!-- <li class="pull-right">
+            <ul class="hi-menu">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href=""><i class="zmdi zmdi-more-vert zmdi-hc-2x"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">HTML</a></li>
+                        <li><a href="#">CSS</a></li>
+                        <li><a href="#">JavaScript</a></li>
+                      </ul>
+                </li>
+            </ul>
+        </li> -->
+    </ul>
+ 
+  </header>
+
+
+
+
 
 
 <!-- Modal -->

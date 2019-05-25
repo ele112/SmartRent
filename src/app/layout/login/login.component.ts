@@ -6,6 +6,9 @@ import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/storage
 import { AngularFirestore } from '@angular/fire/firestore';
 import { FirebaseService } from '../../service/firebase.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { ValidaRutProvider } from '../../service/validaRut';
+import { MatStepper } from '@angular/material/stepper';
+
 import swal from 'sweetalert';
 
 @Component({
@@ -32,16 +35,19 @@ export class LoginComponent implements OnInit {
   file3: any;
 
   spinner: any;
+  nextButton: boolean;
   constructor(private sharedService:SharedService, 
           private _formBuilder: FormBuilder,
           public fire: FirebaseService, 
           private storage: AngularFireStorage,
           private route: ActivatedRoute,
+          private validarut: ValidaRutProvider,
           private router: Router,
           private db: AngularFirestore, ) {  }
 
   ngOnInit() {
     this.spinner = false;
+    this.nextButton = false;
     this.sharedService.statusPanel.next(false);
     this.login = true;
     this.firstFormGroup = this.createForm1();
@@ -113,7 +119,9 @@ export class LoginComponent implements OnInit {
           this.selectedFile3.pending = true;
           this.file3 = _event.item(0);
           let base64 = reader.result;
-          this.imgURL3 = base64;     
+          this.imgURL3 = base64;  
+          console.log("Imagen 3 subida")
+          this.nextButton = true;
 
         }
       });
@@ -127,7 +135,7 @@ export class LoginComponent implements OnInit {
     if(this.file1 != undefined && this.file2 != undefined && this.file3 != undefined){
       this.uploadImages(this.file1, this.file2, this.file3);
     }else{
-      
+      this.nextButton = false;
     }
   }
 
@@ -221,6 +229,19 @@ export class LoginComponent implements OnInit {
       });
     });
     
+  }
+
+  nextForm(stepper: MatStepper){
+
+    let rut = this.firstFormGroup.value['rut'];
+    let valido = this.validarut.checkRut(rut);
+    console.log(valido);
+    if(!valido){
+      swal('','Rut no valido', 'warning');
+    }else{
+      stepper.next();
+    }
+
   }
 
   iniciarSesion(){

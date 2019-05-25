@@ -26,6 +26,7 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { environment } from '../environments/environment';
 import { FirebaseService } from './service/firebase.service';
 import { LoginComponent } from './layout/login/login.component';
+import { ValidaRutProvider } from './service/validaRut';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,7 @@ import { LoginComponent } from './layout/login/login.component';
     FormsModule,
     
   ],
-  providers: [FirebaseService],
+  providers: [FirebaseService, ValidaRutProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

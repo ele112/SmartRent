@@ -51,6 +51,9 @@ export class FirebaseService {
         return this.db.collection("/users").get();
     }
 
+    getForQuery(){
+        return this.db.collection('/publicaciones', ref => ref.where('publicante','==','193454542'));
+    }
 
     getPublicactionForUser(id){
         // Recibe el ID del usuario y devuelve todas las solicitudes realizadas por usuario.
@@ -58,7 +61,7 @@ export class FirebaseService {
     }
     getAllPublications(){
         // Devuelve todas las publicaciones realizadas, para ser desplegadas en el catalogo.
-       return this.db.collection('/publicaciones').snapshotChanges();
+       return this.db.collection('/publicaciones').valueChanges();
     }
 
     getPublicationsForFilter(filter: any){

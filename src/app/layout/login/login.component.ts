@@ -70,7 +70,7 @@ export class LoginComponent implements OnInit {
       tipo: ['usuario', Validators.required],
       name: ['', Validators.required],
       rut: ['', Validators.required],
-      email: ['', Validators.required],
+      email: ['', Validators.email],
       cel: ['', Validators.required],
       pass: ['', Validators.required],
       direccion: ['']

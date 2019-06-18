@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 // import { AngularFireDatabase, AngularFireList } from 'angularfire2/database'
-// import {BaseService} from '../../service/fire.service';
+import {FirebaseService} from '../../service/firebase.service';
 
 @Component({
   selector: 'app-home-list',
@@ -9,37 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeListComponent implements OnInit {
 
-  dataIN: any = [
-    {
-      n: 'sa'
-    },
-    {
-      n: 'sa'
-    },
-    {
-      n: 'sa'
-    },
-    {
-      n: 'sa'
-    },
-    {
-      n: 'sa'
-    },
-    {
-      n: 'sa'
-    },
-    {
-      n: 'sa'
-    },
-    {
-      n: 'sa'
-    },
-    {
-      n: 'sa'
-    },
-    
-
-  ]
+  dataIN: any;
   comuna: any;
 
   comunas = [
@@ -88,13 +58,20 @@ export class HomeListComponent implements OnInit {
   
   
   
-  constructor() { 
+  constructor(private firebase: FirebaseService) { 
     // this.baseService.getUsers();
+    // this.firebase.getForQuery().valueChanges().subscribe((data) => {
+    //   console.log(data)
+    // });
+    this.firebase.getAllPublications().subscribe((data) => {
+      // console.log(data);
+      this.dataIN = data;
+    })
 
   }
 
   ngOnInit() {
-    
+    this.dataIN = [];
   }
 
   comunaSelected(comuna){

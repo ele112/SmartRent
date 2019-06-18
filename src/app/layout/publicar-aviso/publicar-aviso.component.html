@@ -1,3 +1,143 @@
-<p>
-  publicar-aviso works!
-</p>
+<section id="main">
+  <section id="content">
+
+    <div class="body" align="center">
+      <div class="center-wrapper">
+        <div style="width: 100 !important;">
+          <br>
+          <p class="font-text-title">Publicar aviso</p>
+        </div>
+        <div class="body-items">
+          <form  [formGroup]="publishForm" class="example-form">
+
+            <div class="row">
+              <div class="col-sm-6">
+                  <mat-form-field class="example-full-width">
+                    <input matInput formControlName="titulo" placeholder="Titulo">
+                  </mat-form-field>
+              </div>
+              <div class="col-sm-6"></div>
+
+            </div>
+            <div class="row">
+              <div class="col-sm-4">
+                <mat-form-field class="example-full-width">
+                  <mat-label>Categorías</mat-label>
+                  <mat-select  formControlName="categoria">
+                    <mat-option>None</mat-option>
+                    <mat-option value="option1">Option 1</mat-option>
+                    <mat-option value="option2">Option 2</mat-option>
+                    <mat-option value="option3">Option 3</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col-sm-2">
+                <mat-form-field class="example-full-width">
+                  <input matInput formControlName="patente" placeholder="Patente">
+                </mat-form-field>
+              </div>
+              <div class="col-sm-2">
+                <mat-form-field class="example-full-width">
+                  <input matInput formControlName="modelo" placeholder="Modelo">
+                </mat-form-field>
+              </div>
+              <div class="col-sm-2">
+                <mat-form-field class="example-full-width">
+                  <input matInput formControlName="marca" placeholder="Marca">
+                </mat-form-field>
+              </div>
+              <div class="col-sm-2">
+                <mat-form-field class="example-full-width">
+                  <input matInput formControlName="anio" placeholder="Año">
+                </mat-form-field>
+              </div>
+
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-sm-2">
+                  <mat-form-field class="example-full-width">
+                      <mat-label>Combustible</mat-label>
+                      <mat-select formControlName="combustible">
+                        <mat-option>None</mat-option>
+                        <mat-option value="option1">Bencina 93</mat-option>
+                        <mat-option value="option2">Bencina 95</mat-option>
+                        <mat-option value="option3">Bencina 97</mat-option>
+                        <mat-option value="option3">Diésel</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+              </div>
+              <div class="col-sm-2">
+                  <mat-form-field class="example-full-width">
+                      <mat-label>Transmision</mat-label>
+                      <mat-select formControlName="transmision" >
+                        <mat-option>None</mat-option>
+                        <mat-option value="option1">Ninguna</mat-option>
+                        <mat-option value="option2">Automática</mat-option>
+                        <mat-option value="option3">Manual</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+              </div>
+              <div class="col-sm-2">
+                <mat-form-field class="example-full-width">
+                  <input matInput formControlName="cilindraje" placeholder="Cilindraje">
+                </mat-form-field>
+              </div>
+              <div class="col-sm-2">
+                <mat-form-field class="example-full-width">
+                  <input matInput formControlName="carga" placeholder="Capacidad de carga (Kg)">
+                </mat-form-field>
+              </div>
+              <div class="col-sm-2">
+                <mat-form-field class="example-full-width">
+                  <input matInput formControlName="valorDia" placeholder="Valor dia">
+                </mat-form-field>
+              </div>
+              <div class="col-sm-2">
+                <mat-form-field class="example-full-width">
+                  <input matInput formControlName="valorHora" placeholder="Valor hora">
+                </mat-form-field>
+              </div>
+            </div>
+
+            <br>
+            <div class="row">
+              <div class="col-sm-4">
+                <mat-form-field  class="example-full-width">
+                  <textarea matInput formControlName="descripcion" rows="8" placeholder="Descripcion"></textarea>
+                </mat-form-field>
+              </div>
+              <div class="col-sm-8" align="left">
+              <p for="">Selecciona imágenes</p>
+
+              <div class="inline-ctn">
+                  <div class="inline">
+                      <img src="http://placehold.it/80x80" />
+                  </div>
+                  <div class="inline">
+                      <img src="http://placehold.it/80x80" />
+                  </div>  
+                   <div class="inline">
+                      <img src="http://placehold.it/80x80" />
+                  </div> 
+                  <div class="inline">
+                      <img src="http://placehold.it/80x80" />
+                  </div>
+  
+              </div>         
+              </div>
+            </div>
+
+            <button mat-flat-button style="margin-top: 50px;" (click)="publish()" color="primary">Publicar</button>
+
+            <br><br>
+
+
+          </form>
+
+        </div>
+      </div>
+    </div>
+
+  </section>
+</section>

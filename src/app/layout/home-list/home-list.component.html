@@ -24,21 +24,7 @@
                             </mat-select>
                         </mat-form-field>
                     </div>
-                    <!-- <div class="col-sm-3" align="center">
-                                <mat-form-field style="width: 100%;">
-                                    <input matInput [matDatepicker]="picker" (focus)="picker.open()" placeholder="Fecha inicio">
-                                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                                    <mat-datepicker #picker></mat-datepicker>
-                                </mat-form-field>
-                            </div>
-                
-                            <div class="col-sm-3">
-                                <mat-form-field style="width: 100%;">
-                                    <input matInput [matDatepicker]="picker2" (focus)="picker.open()" placeholder="Fecha entrega">
-                                    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-                                    <mat-datepicker #picker2></mat-datepicker>
-                                </mat-form-field>
-                            </div> -->
+
                     <div class="col-sm-12 col-md-4 col-xs-4" align="center">
 
                         <mat-form-field>
@@ -71,44 +57,36 @@
                     <div class="row">
                         <div class="col-sm-12 col-md-4 col-xs-4" *ngFor="let item of dataIN; let i = index">
                             <mat-card class="cardList" (click)="solicitarArriendo()" [routerLink]="['/Ficha']">
-                                <img mat-card-image
-                                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDfiRNAdAH4REu7H_i1BYBEkQtLBQ8SW0dgPAD1IFGrCNnNjMc">
-                                <label class="marca">Kia</label><br>
-                                <label class="modelo">Sorento</label>
-                                <div class="row">
-                                    <div class="col-sm-6" align="left">
-                                        <label class="year">AÑO: 2015</label>
-                                    </div>
-                                    <div class="col-sm-6" align="right">
-                                        <label class="plate">Patente: BHDG32</label>
-                                    </div>
+                                <div class="ctn-img">
+                                    <img mat-card-image
+                                    [src]="item.img1" class="img">
                                 </div>
-                                <div class="row foot">
-                                    <div class="col-sm-6" align="left">
-                                        <label for="">Detalle</label>
-                                    </div>
-                                    <div class="col-sm-6" align="right">
-                                        <label class="pricefn">$23.000 x dia</label>
-                                    </div>
+                           <div style="padding: 7px;">
+                            <label class="marca">{{item.marca}}</label><br>
+                            <label class="modelo">{{item.modelo}}</label>
+                            <div class="row">
+                                <div class="col-sm-6" align="left">
+                                    <label class="year">AÑO: {{item.anio}}</label>
                                 </div>
+                                <div class="col-sm-6" align="right">
+                                    <label class="plate">Patente: {{item.patente}}</label>
+                                </div>
+                            </div>
+                            <div class="row foot">
+                                <div class="col-sm-6" align="left">
+                                    <label for="">Detalle</label>
+                                </div>
+                                <div class="col-sm-6" align="right">
+                                    <label class="pricefn">${{item.valorDia}} x dia</label>
+                                </div>
+                            </div>
+                           </div>
+                            
                             </mat-card>
                             <br>
                         </div>
                     </div>
 
-                    <!-- <div fxLayout='row' fxLayoutWrap fxLayoutGap="2rem">
-                                        <mat-card fxFlex.gt-md="20" fxFlex.md="28"  fxFlex.sm="40" fxFlex.xs="100" *ngFor="let recipe of dataIN"  class="recipe-card">
-                                          <mat-card-header>
-                                            <mat-card-title>element</mat-card-title>
-                                          </mat-card-header>
-                                          <img mat-card-image src="http://placehold.it/350x200">
-                                          <mat-card-content>
-                                            <p>
-                                              Lorem Ipsum
-                                            </p>
-                                          </mat-card-content>
-                                        </mat-card>
-                                </div> -->
 
                 </div>
 

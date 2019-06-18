@@ -26,10 +26,9 @@ export class publicacion{
     capacidadCarga = "";
     valorDia = "";
     valorHora = "";
-    lugarEntrega = "";
     fechaPublicacion = "";
     imagenUrl_1 = "";
-    imagenUrl_2 = "";
+    imagenUrl_2 = ""; 
     imagenUrl_3 = "";
     imagenUrl_4 = "";
 

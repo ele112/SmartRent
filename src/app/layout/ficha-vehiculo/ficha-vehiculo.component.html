@@ -12,7 +12,8 @@
               <div class="image-gallery">
                 <slideshow  [autoPlay]="true" 
                 [showArrows]="false" [imageUrls]="images"
-                  [showArrows]="true" [lazyLoad]="imageSources?.length > 1" [autoPlayWaitForLazyLoad]="true">
+                  [showArrows]="true" [lazyLoad]="images?.length > 1" 
+                  [autoPlayWaitForLazyLoad]="true">
 
                 </slideshow>
 

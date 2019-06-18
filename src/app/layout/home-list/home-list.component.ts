@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 // import { AngularFireDatabase, AngularFireList } from 'angularfire2/database'
 import {FirebaseService} from '../../service/firebase.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home-list',
@@ -58,13 +59,12 @@ export class HomeListComponent implements OnInit {
   
   
   
-  constructor(private firebase: FirebaseService) { 
+  constructor(private firebase: FirebaseService,  private router: Router) { 
     // this.baseService.getUsers();
     // this.firebase.getForQuery().valueChanges().subscribe((data) => {
     //   console.log(data)
     // });
     this.firebase.getAllPublications().subscribe((data) => {
-      // console.log(data);
       this.dataIN = data;
     })
 
@@ -80,5 +80,10 @@ export class HomeListComponent implements OnInit {
   solicitarArriendo(){
     
   }
+
+  verFicha(id){
+    this.router.navigate(['/Ficha', {Id: id}]);
+  }
+
 
 }

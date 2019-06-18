@@ -27,6 +27,7 @@ import { environment } from '../environments/environment';
 import { FirebaseService } from './service/firebase.service';
 import { LoginComponent } from './layout/login/login.component';
 import { ValidaRutProvider } from './service/validaRut';
+import {SlideshowModule} from 'ng-simple-slideshow';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { ValidaRutProvider } from './service/validaRut';
     MaterialModule,
     ReactiveFormsModule,
     FormsModule,
+    SlideshowModule
     
   ],
   providers: [FirebaseService, ValidaRutProvider],

@@ -35,11 +35,12 @@ export class publicacion{
 }   
 
 export class solicitud{
-    publicante = "";
+    idPubl = "";
     solicitante = "";
     fechaSolicitud = "";
-    Comentarios = "";
-    contacto = "";
+    comentario = "";
+    titulo = "";
+    estado = "";
 }
 
 

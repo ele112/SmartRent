@@ -266,6 +266,7 @@ export class LoginComponent implements OnInit {
               self.sharedService.statusLogIn.next(log);
               localStorage.setItem('userLoged', 'login');
               localStorage.setItem('userName', data['name']);
+              localStorage.setItem('userRut', data['rut']);
               self.router.navigate(['/Home']);
               
             }, (err) => {

@@ -9,99 +9,122 @@
 
           <div class="row row-gallery">
             <div class="col-sm-5" align="right">
-                <div class="image-gallery">
+              <div class="image-gallery">
+                <slideshow [height]="height" [autoPlay]="true" [showArrows]="false" [imageUrls]="images"
+                  [showArrows]="true" [lazyLoad]="imageSources?.length > 1" [autoPlayWaitForLazyLoad]="true">
 
-                </div>
+                </slideshow>
+
+              </div>
             </div>
             <div class="col-sm-7" align="center">
 
-              <div class="row row-style" >
+              <div class="row row-style">
                 <div class="col-sm-6" align="left">
                   <p for=""><strong>Publicante: </strong>
-                    
+                    {{itemNombre}}
                   </p>
                 </div>
-                <div class="col-sm-6" >
-                    <a [routerLink]="['/Perfil']">Perfil</a>
+                <div class="col-sm-6">
+                  <a [routerLink]="['/Perfil', {Id: itemData.publicante}]">Perfil</a>
                 </div>
               </div>
               <div class="row row-style" align="left">
                 <div class="col-sm-3">
-                    <p for=""><strong>Categoría: </strong>
-                    
-                    </p>
+                  <p for=""><strong>Categoría: </strong>
+                    {{itemData.categoria}}
+                  </p>
                 </div>
                 <div class="col-sm-3">
-                    <p for=""><strong>Marca: </strong>
-                    
-                    </p>
+                  <p for=""><strong>Marca: </strong>
+                    {{itemData.marca}}
+                  </p>
                 </div>
                 <div class="col-sm-3">
-                    <p for=""><strong>Modelo: </strong>
-                    
-                    </p>
+                  <p for=""><strong>Modelo: </strong>
+                    {{itemData.modelo}}
+
+                  </p>
                 </div>
                 <div class="col-sm-3">
-                    <p for=""><strong>Año: </strong>
-                    
-                    </p>
-                  </div>
+                  <p for=""><strong>Año: </strong>
+                    {{itemData.anio}}
+
+                  </p>
+                </div>
               </div>
 
-              <div class="row row-style"  align="left">
-                  <div class="col-sm-3" >
-                      <p for=""><strong>Combustible: </strong>
-                      
-                      </p>
-                  </div>
-                  <div class="col-sm-3">
-                      <p for=""><strong>Transmisión: </strong>
-                      
-                      </p>
-                  </div>
-                  <div class="col-sm-3">
-                      <p for=""><strong>Cilindraje: </strong>
-                      
-                      </p>
-                  </div>
-                  <div class="col-sm-3">
-                      <p for=""><strong>Capacidad: </strong>
-                      
-                      </p>
-                    </div>
-                </div>
+              <div class="row row-style" align="left">
+                <div class="col-sm-3">
+                  <p for=""><strong>Combustible: </strong>
+                    {{itemData.combustible}}
 
-                <div class="row row-style"  align="left">
-                  <div class="col-sm-4">
-                      <p for=""><strong>Fecha Publicación: </strong>
-                      
-                      </p>
-                  </div>
-                  <div class="col-sm-4">
-                      <p for=""><strong>Valor x Dia: </strong>
-                      
-                      </p>
-                  </div>
-                  <div class="col-sm-4">
-                      <p for=""><strong>Valor x Hora: </strong>
-                      
-                      </p>
-                  </div>
+                  </p>
                 </div>
-                <div class="row row-style" align="left">
-                  <div class="col-sm-12">
-                      <p for=""><strong>Descripción: </strong>
-                      
-                      </p>
-                  </div>
-                </div>
-                <br><br>
-                <div class="row row-btn">
+                <div class="col-sm-3">
+                  <p for=""><strong>Transmisión: </strong>
+                    {{itemData.transmision}}
 
-                  <div class="col-sm-12" align="right">
-                      <button mat-raised-button style="background: green; color: white;">Crear Solicitud</button>
-                  </div>
+                  </p>
                 </div>
+                <div class="col-sm-3">
+                  <p for=""><strong>Cilindraje: </strong>
+                    {{itemData.cilindraje}}
+
+                  </p>
+                </div>
+                <div class="col-sm-3">
+                  <p for=""><strong>Capacidad: </strong>
+                    {{itemData.capacidad}}
+
+                  </p>
+                </div>
+              </div>
+
+              <div class="row row-style" align="left">
+                <div class="col-sm-4">
+                  <p for=""><strong>Fecha Publicación: </strong>
+                    {{itemData.fechaPublicacion}}
+
+                  </p>
+                </div>
+                <div class="col-sm-4">
+                  <p for=""><strong>Valor x Dia: </strong>
+                    &nbsp;
+                    <label style="color: green; font-size: 12px; font-weight: bold;">
+                      {{itemData.valorDia}}
+                    </label>
+                  </p>
+                </div>
+                <div class="col-sm-4">
+                  <p for=""><strong>Valor x Hora: </strong>
+                    &nbsp;
+                    <label style="color: green; font-size: 12px; font-weight: bold;">
+                      {{itemData.valorHora}}
+                    </label>
+                  </p>
+
+                </div>
+              </div>
+              <div class="row row-style" align="left">
+                <div class="col-sm-12">
+                  <p for=""><strong>Descripción: </strong>
+                    {{itemData.descripcion}}
+                  </p>
+                </div>
+              </div>
+              <br><br>
+              <div class="row row-btn">
+
+                <div class="col-sm-8">
+                    <mat-form-field  class="example-full-width">
+                  <textarea matInput rows="3" id="comentario" #comentario placeholder="Agrega un comentario al crear tu solicitud"></textarea>
+                  </mat-form-field>
+                </div>
+                <div class="col-sm-4" align="right">
+                  <button mat-raised-button style="background: green; color: white;" (click)="crearSolicitud()">Crear Solicitud</button>
+                </div>
+              </div>
 
 
             </div>

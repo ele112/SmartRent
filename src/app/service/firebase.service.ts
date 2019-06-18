@@ -55,6 +55,35 @@ export class FirebaseService {
         return this.db.collection('/publicaciones', ref => ref.where('publicante','==','193454542'));
     }
 
+    getFichaForId(id){
+        return this.db.collection('/publicaciones', ref => ref.where('id','==',id)).valueChanges();
+    }
+    getNameForRut(rut){
+        return this.db.collection('/users', ref => ref.where('rut','==', rut)).valueChanges();
+    }
+
+    /**
+     * 
+     * @param id Id de la publicacion
+     * @param rut rut del solicitante
+     */
+    addRequest(req){
+
+        return this.db.collection('/solicitudes').add({
+            idPublicacion: req.idPubl,
+            solicitanteRut: req.solicitante,
+            fechaSolicitud: req.fechaSolicitud,
+            comentario: req.comentario,
+            titulo: req.comentario,
+            estado: req.estado
+        });
+    }
+
+    existRequest(id, rut){
+        return this.db.collection('/solicitudes', ref => ref.where('solicitanteRut','==', rut)
+        .where('idPublicacion','==', id)).valueChanges();
+    }
+
     getPublicactionForUser(id){
         // Recibe el ID del usuario y devuelve todas las solicitudes realizadas por usuario.
 

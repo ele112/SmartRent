@@ -50,12 +50,13 @@
             </mat-card>
             <br><br>
             <mat-card class="centerWrapper" align="center">
-                <div class="ctnList">
+                <div class="ctnList" align="center">
 
 
                     <br>
                     <div class="row">
                         <div class="col-sm-12 col-md-4 col-xs-4" *ngFor="let item of dataIN; let i = index">
+                            <br><br>
                             <mat-card class="cardList" (click)="solicitarArriendo()" [routerLink]="['/Ficha']">
                                 <div class="ctn-img">
                                     <img mat-card-image

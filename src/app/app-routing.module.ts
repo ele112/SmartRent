@@ -5,6 +5,7 @@ import { FichaVehiculoComponent } from './layout/ficha-vehiculo';
 import { LoginComponent } from './layout/login';
 import { PublicarAvisoComponent } from './layout/publicar-aviso/publicar-aviso.component';
 import { SolicitudesComponent } from './layout/solicitudes/solicitudes.component';
+import { PerfilComponent } from './layout/perfil/perfil.component';
 
 const routes: Routes = [
   { path: '', component: HomeListComponent},
@@ -12,7 +13,9 @@ const routes: Routes = [
   { path: 'Home', component: HomeListComponent},
   { path: 'Ficha', component: FichaVehiculoComponent},
   { path: 'Publicar', component: PublicarAvisoComponent},
-  { path: 'Solicitudes', component: SolicitudesComponent}
+  { path: 'Solicitudes', component: SolicitudesComponent},
+  { path: 'Perfil', component: PerfilComponent}
+
 
 
 

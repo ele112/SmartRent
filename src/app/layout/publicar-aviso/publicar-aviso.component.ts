@@ -28,7 +28,7 @@ export class PublicarAvisoComponent implements OnInit {
       anio: ['', Validators.required],
       combustible: ['', Validators.required],
       transmision: [''],
-      cilindraje: ['', Validators.required],
+      cilindraje: ['',],
       carga: [''],
       valorDia: ['', Validators.required],
       valorHora: ['', Validators.required],

@@ -46,6 +46,7 @@ export class LoginComponent implements OnInit {
           private db: AngularFirestore, ) {  }
 
   ngOnInit() {
+    let logIn= localStorage.getItem('userLoged');
     this.spinner = false;
     this.nextButton = false;
     this.sharedService.statusPanel.next(false);
@@ -54,6 +55,10 @@ export class LoginComponent implements OnInit {
     this.secondFormGroup = this.createForm2();
     this.loginFormGroup = this.createForm3();
     this.progrees = 'Subiendo imágenes...';
+    if(logIn == "login"){
+      this.router.navigate(['/Home']);      
+    }
+   
 
   }
 
@@ -208,7 +213,9 @@ export class LoginComponent implements OnInit {
             let log = {status: 'login', name: us.name};
             this.sharedService.statusLogIn.next(log);
             localStorage.setItem('userLoged', 'login');
+            localStorage.setItem('userRut', us.rut);
             localStorage.setItem('userName', us.name);
+            localStorage.setItem('userMail', us.correo);
             this.router.navigate(['/Home']);
   
           });
@@ -235,12 +242,26 @@ export class LoginComponent implements OnInit {
 
     let rut = this.firstFormGroup.value['rut'];
     let valido = this.validarut.checkRut(rut);
-    console.log(valido);
-    if(!valido){
-      swal('','Rut no valido', 'warning');
-    }else{
-      stepper.next();
-    }
+
+    let req = this.fire.existMail(this.firstFormGroup.value['email']).subscribe((data) => {
+      req.unsubscribe(); 
+      console.log(data)
+      setTimeout(() => {
+        if(data.length > 0){
+          swal('', 'El correo ya existe!', 'info');
+        }else{
+          if(!valido){
+            swal('','Rut no valido', 'warning');
+          }else{
+            stepper.next();
+          }
+
+        }
+    
+
+        }, 300)
+    });
+
 
   }
 
@@ -267,6 +288,7 @@ export class LoginComponent implements OnInit {
               localStorage.setItem('userLoged', 'login');
               localStorage.setItem('userName', data['name']);
               localStorage.setItem('userRut', data['rut']);
+              localStorage.setItem('userMail', formData['email']);
               self.router.navigate(['/Home']);
               
             }, (err) => {

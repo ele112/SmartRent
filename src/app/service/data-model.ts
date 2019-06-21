@@ -36,6 +36,7 @@ export class publicacion{
 
 export class solicitud{
     idPubl = "";
+    idSol = "";
     solicitante = "";
     fechaSolicitud = "";
     comentario = "";

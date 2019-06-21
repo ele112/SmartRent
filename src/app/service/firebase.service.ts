@@ -2,12 +2,14 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
+
 // import {} from '';
 @Injectable()
 export class FirebaseService {
 
 
-    constructor( public db: AngularFirestore, public auth: AngularFireAuth){
+    constructor( public db: AngularFirestore,
+         public auth: AngularFireAuth){
 
     }
 
@@ -67,27 +69,43 @@ export class FirebaseService {
      * @param id Id de la publicacion
      * @param rut rut del solicitante
      */
-    addRequest(req){
+    addRequest(docId, data){
 
-        return this.db.collection('/solicitudes').add({
-            idPublicacion: req.idPubl,
-            solicitanteRut: req.solicitante,
-            fechaSolicitud: req.fechaSolicitud,
-            comentario: req.comentario,
-            titulo: req.comentario,
-            estado: req.estado
+        return this.db.doc('/publicaciones/'+docId).update({
+            solicitudes: data
         });
     }
 
-    existRequest(id, rut){
-        return this.db.collection('/solicitudes', ref => ref.where('solicitanteRut','==', rut)
-        .where('idPublicacion','==', id)).valueChanges();
+    existMail(mail){
+        return this.db.collection('/users', ref => ref.where('mail','==', mail)).valueChanges();
     }
 
-    getPublicactionForUser(id){
-        // Recibe el ID del usuario y devuelve todas las solicitudes realizadas por usuario.
+    requestSended(rut){
+        return this.db.collection('/solicitudes', ref => ref.where('rutSolicitante', '==', rut)).valueChanges();
+    }
+
+    getPublishForRut(rut){
+        return this.db.collection('/publicaciones', ref => ref.where('publicante','==', rut)).valueChanges();
 
     }
+
+    getDocumentId(id){
+        return this.db.collection('/publicaciones', ref => ref.where('id','==', id)).snapshotChanges();
+    }
+
+    addNewRequest(el){
+        return this.db.collection('/solicitudes').add({
+            idSolicitud: el.idSolicitud,
+            idPublicacion: el.idPublicacion,
+            rutSolicitante: el.rutSolicitante,
+            tituloPublicacion: el.tituloPublicacion,
+            fechaSolicitud: el.fechaSolicitud,
+            estado: el.estado,
+            comentarioSolicitud: el.comentarioSolicitud,
+        });
+    }
+
+
     getAllPublications(){
         // Devuelve todas las publicaciones realizadas, para ser desplegadas en el catalogo.
        return this.db.collection('/publicaciones').valueChanges();
@@ -150,10 +168,6 @@ export class FirebaseService {
     deletePublicaction(){
         //Recibe el ID del usuario
     }
-
-
-
-
 
 
 }

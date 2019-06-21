@@ -68,6 +68,7 @@ export class HomeListComponent implements OnInit {
       this.dataIN = data;
     })
 
+
   }
 
   ngOnInit() {

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-
+import { FirebaseService } from '../../service/firebase.service';
+import { Router, ActivatedRoute } from '@angular/router';
+declare var $window: any;
 @Component({
   selector: 'app-solicitudes',
   templateUrl: './solicitudes.component.html',
@@ -11,45 +13,56 @@ export class SolicitudesComponent implements OnInit {
   solicitudesE: any;
   _solicitudesR: any;
   _solicitudesE: any;
-  constructor() { }
+  constructor(private fire: FirebaseService, private router: Router) { }
 
   ngOnInit() {
     this.solicitudesR = false;
     this.solicitudesE = false;
-    this._solicitudesR = [
-      {id: "1", titulo: 'Mazda 3 Arriendo', comentario: 'Lorem ipsum dolor sit amet consectetur'+
-      'adipisicing elit. Dolore, eum. Possimus veniam necessitatibus, '+
-      'in voluptates quas voluptatem harum illum doloremque commodi corporis aut eius, '+
-      'impedit maxime mollitia quisquam! Aut, maiores?', solcitante: ''},
-      {id: "2", titulo: 'Mazda 3 Arriendo', comentario: 'Lorem ipsum dolor sit amet consectetur'+
-      'adipisicing elit. Dolore, eum. Possimus veniam necessitatibus, '+
-      'in voluptates quas voluptatem harum illum doloremque commodi corporis aut eius, '+
-      'impedit maxime mollitia quisquam! Aut, maiores?', solcitante: ''},
-      {id: "3", titulo: 'Mazda 3 Arriendo', comentario: 'Lorem ipsum dolor sit amet consectetur'+
-      'adipisicing elit. Dolore, eum. Possimus veniam necessitatibus, '+
-      'in voluptates quas voluptatem harum illum doloremque commodi corporis aut eius, '+
-      'impedit maxime mollitia quisquam! Aut, maiores?', solcitante: ''},
-      {id: "4", titulo: 'Mazda 3 Arriendo', comentario: 'Lorem ipsum dolor sit amet consectetur'+
-      'adipisicing elit. Dolore, eum. Possimus veniam necessitatibus, '+
-      'in voluptates quas voluptatem harum illum doloremque commodi corporis aut eius, '+
-      'impedit maxime mollitia quisquam! Aut, maiores?', solcitante: ''},
-      {id: "5", titulo: 'Mazda 3 Arriendo', comentario: 'Lorem ipsum dolor sit amet consectetur'+
-      'adipisicing elit. Dolore, eum. Possimus veniam necessitatibus, '+
-      'in voluptates quas voluptatem harum illum doloremque commodi corporis aut eius, '+
-      'impedit maxime mollitia quisquam! Aut, maiores?', solcitante: ''},
-      {id: "6", titulo: 'Mazda 3 Arriendo', comentario: 'Lorem ipsum dolor sit amet consectetur'+
-      'adipisicing elit. Dolore, eum. Possimus veniam necessitatibus, '+
-      'in voluptates quas voluptatem harum illum doloremque commodi corporis aut eius, '+
-      'impedit maxime mollitia quisquam! Aut, maiores?', solcitante: ''},
+    this._solicitudesR = [];
+    this._solicitudesE = []
 
-    ];
-    this._solicitudesE = [
-      {id: "1", titulo: 'Mazda 3 Arriendo', comentario: 'Lorem ipsum dolor sit amet consectetur'+
-      'adipisicing elit. Dolore, eum. Possimus veniam necessitatibus, '+
-      'in voluptates quas voluptatem harum illum doloremque commodi corporis aut eius, '+
-      'impedit maxime mollitia quisquam! Aut, maiores?', publicacion: '145'},
-    ]
+    let rut = localStorage.getItem('userRut');
+    let q = this.fire.requestSended(rut).subscribe((data) => {
+      q.unsubscribe();
+      console.log(data);
+      this._solicitudesE = data;
+    });
+    let r = this.fire.getPublishForRut(rut).subscribe((data) => {
+      r.unsubscribe();
+      console.log(data);
+      this.prepare(data);
+    });
     
+  }
+
+  prepare(data){
+    let solicitudes = [];
+    data.forEach(element => {
+      if(element['solicitudes'] != undefined){
+        let dat = element['solicitudes'];
+        dat.forEach(i => {
+          solicitudes.push(i);
+        });
+      }
+    });
+
+    this._solicitudesR = solicitudes;
+    console.log(solicitudes);
+  }
+
+  solicitudEstado(data){
+    let email = localStorage.getItem('userMail');
+    let subject = "Solicitud arriendo vehículo";
+    let msg = 'Hola! te contacto para solicitar arriendo del vehiculo publicado '+
+    data['tituloPublicacion']+'. Contactame al +569 XXXXXXXX %0D%0A %0D%0APublicacion: %0D%0A';
+    let url = "%20http://localhost:4200/Ficha;Id="+data["idPublicacion"]+" %0D%0A%0D%0A"
+    // console.log(data)
+    location.href = "mailto:"+email+"?subject="+subject+"&body="+msg+"\n"+url;
+
+    // location.href = "mailto:veron@gmail.com?subject=hello&body=fggf"
+
+
+
   }
 
 }

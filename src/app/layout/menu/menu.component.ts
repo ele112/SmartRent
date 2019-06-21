@@ -28,6 +28,11 @@ export class MenuComponent implements OnInit {
     });
   }
 
+  ngOnChange(){
+    this.verifyStorage();
+  }
+
+
   verifyStorage(){
     let logIn = localStorage.getItem('userLoged');
     let name = localStorage.getItem('userName');
@@ -46,6 +51,7 @@ export class MenuComponent implements OnInit {
       console.log(data);
       localStorage.setItem('userLoged', null);
       localStorage.setItem('userName', null);
+      localStorage.clear();
 
       location.reload();
 

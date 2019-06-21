@@ -55,7 +55,7 @@ export class SolicitudesComponent implements OnInit {
     let subject = "Solicitud arriendo vehículo";
     let msg = 'Hola! te contacto para solicitar arriendo del vehiculo publicado '+
     data['tituloPublicacion']+'. Contactame al +569 XXXXXXXX %0D%0A %0D%0APublicacion: %0D%0A';
-    let url = "%20http://localhost:4200/Ficha;Id="+data["idPublicacion"]+" %0D%0A%0D%0A"
+    let url = "https://aa-aa12.herokuapp.com/Ficha;Id="+data["idPublicacion"]+" %0D%0A%0D%0A"
     // console.log(data)
     location.href = "mailto:"+email+"?subject="+subject+"&body="+msg+"\n"+url;
 

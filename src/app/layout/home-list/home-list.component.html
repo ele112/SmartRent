@@ -17,10 +17,41 @@
 
                         <mat-form-field>
                             <mat-label>Comuna</mat-label>
-                            <mat-select [(ngModel)]="comuna" (selectionChange)="comunaSelected(comuna)">
-                                <mat-option *ngFor="let item of comunas" [value]="item.id">
-                                    {{item.nombre}}
-                                </mat-option>
+                            <mat-select [(ngModel)]="comuna">
+                                <mat-option>None</mat-option>
+                                <mat-option value="Cerrillos">Cerrillos</mat-option>
+                                <mat-option value="Cerro Navia">Cerro Navia</mat-option>
+                                <mat-option value="Conchali">Conchali</mat-option>
+                                <mat-option value="EL Bosque">EL Bosque</mat-option>
+                                <mat-option value="Estacion Central">Estacion Central</mat-option>
+                                <mat-option value="Huechuraba">Huechuraba</mat-option>
+                                <mat-option value="Independencia">Independencia</mat-option>
+                                <mat-option value="La Cisterna">La Cisterna</mat-option>
+                                <mat-option value="La Florida">La Florida</mat-option>
+                                <mat-option value="La Granja">La Granja</mat-option>
+                                <mat-option value="La Pintana">La Pintana</mat-option>
+                                <mat-option value="Las Condes">Las Condes</mat-option>
+                                <mat-option value="Lo Barnechea">Lo Barnechea</mat-option>
+                                <mat-option value="Automovil">Lo Espejo</mat-option>
+                                <mat-option value="AutLo Espejoomovil">Lo Prado</mat-option>
+                                <mat-option value="Macul">Macul</mat-option>
+                                <mat-option value="Maipu">Maipu</mat-option>
+                                <mat-option value="Nunoa">Nunoa</mat-option>
+                                <mat-option value="Padre Hurtado">Padre Hurtado</mat-option>
+                                <mat-option value="Penalolen">Penalolen</mat-option>
+                                <mat-option value="Providencia">Providencia</mat-option>
+                                <mat-option value="Pudahuel">Pudahuel</mat-option>
+                                <mat-option value=">Puente Alto">Puente Alto</mat-option>
+                                <mat-option value="Quilicura">Quilicura</mat-option>
+                                <mat-option value="Quinta Normal">Quinta Normal</mat-option>
+                                <mat-option value="Recoleta">Recoleta</mat-option>
+                                <mat-option value="Renca">Renca</mat-option>
+                                <mat-option value="San Bernardo">San Bernardo</mat-option>
+                                <mat-option value="San Joaquin">San Joaquin</mat-option>
+                                <mat-option value="San Miguel">San Miguel</mat-option>
+                                <mat-option value="San Ramon">San Ramon</mat-option>
+                                <mat-option value="Santiago">Santiago</mat-option>
+                                <mat-option value="Vitacura">Vitacura</mat-option>
                             </mat-select>
                         </mat-form-field>
                     </div>
@@ -28,19 +59,28 @@
                     <div class="col-sm-12 col-md-4 col-xs-4" align="center">
 
                         <mat-form-field>
-                            <mat-label>Tipo de vehiculo</mat-label>
-                            <mat-select>
-                                <mat-option *ngFor="let item of vehiculo" [value]="item.id">
-                                    {{item.tipo}}
-                                </mat-option>
-
+                            <mat-label>Categoría</mat-label>
+                            <mat-select [(ngModel)]="categoria">
+                                <mat-option>None</mat-option>
+                                <mat-option value="Automovil">Automovil</mat-option>
+                                <mat-option value="Motocicleta">Motocicleta</mat-option>
+                                <mat-option value="Minibus">Minibus</mat-option>
+                                <mat-option value="Autobus">Autobus</mat-option>
+                                <mat-option value="Camion">Camion</mat-option>
+                                <mat-option value="Remolque">Remolque</mat-option>
+                                <mat-option value="Carga pesada">Carga pesada</mat-option>
+                                <mat-option value="Maquinaria Agricola">Maquinaria Agricola</mat-option>
+                                <mat-option value="Maquinaria industrial">Maquinaria industrial</mat-option>
                             </mat-select>
                         </mat-form-field>
 
                     </div>
                     <div class="col-sm-12 col-md-4 col-xs-4" align="center">
-                        <button class="btn btn-primary " type="button">
+                        <button class="btn btn-primary " (click)="buscar()" type="button">
                             Buscar
+                        </button> &nbsp;&nbsp;
+                        <button class="btn btn-primary " (click)="searchAll()" type="button">
+                            Traer todos
                         </button>
                     </div>
 

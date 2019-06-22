@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 // import { AngularFireDatabase, AngularFireList } from 'angularfire2/database'
 import {FirebaseService} from '../../service/firebase.service';
 import { Router } from '@angular/router';
+import swal from 'sweetalert';
 
 @Component({
   selector: 'app-home-list',
@@ -9,64 +10,17 @@ import { Router } from '@angular/router';
   styleUrls: ['./home-list.component.scss']
 })
 export class HomeListComponent implements OnInit {
+  @ViewChild('comuna') comuna;
+  @ViewChild('categoria') categoria;
 
   dataIN: any;
-  comuna: any;
-
-  comunas = [
-    {
-      "nombre": "Santiago",
-      "id": 1,
-    },
-    {
-      "nombre": "Cerrillos",
-      "id": 2,
-    },
-    {
-      "nombre": "Cerro Navia",
-      "id": 1,
-    },
-    {
-      "nombre": "El Bosque",
-      "id": 1,
-    },
-    {
-      "nombre": "Estación Central",
-      "id": 1,
-    },
-    {
-      "nombre": "Huechuraba",
-      "id": 1,
-    }
-  ]
-
-  vehiculo = [
-    {
-      "tipo": "Normal",
-      "id": 1
-    },
-    {
-      "tipo": "Carga Pesada",
-      "id": 1
-    },
-    {
-      "tipo": "Camion",
-      "id": 1
-    }
-  ]
-  
-  
-  
-  
-  
+   
   constructor(private firebase: FirebaseService,  private router: Router) { 
     // this.baseService.getUsers();
     // this.firebase.getForQuery().valueChanges().subscribe((data) => {
     //   console.log(data)
     // });
-    this.firebase.getAllPublications().subscribe((data) => {
-      this.dataIN = data;
-    })
+    this.searchAll();
 
 
   }
@@ -75,11 +29,33 @@ export class HomeListComponent implements OnInit {
     this.dataIN = [];
   }
 
-  comunaSelected(comuna){
+  buscar(){
+    console.log(this.comuna);
+    console.log(this.categoria);
+
+    if(this.comuna != "" && this.comuna != null){
+
+      if(this.categoria != "" && this.categoria != null){
+        
+        let r = this.firebase.searchPublished(this.comuna, this.categoria).subscribe((data) => {
+          r.unsubscribe();
+          this.dataIN = data;
+        });
+
+      }else{
+        swal('','Debe seleccionar una categoria', 'info');
+      }
+
+    }else{
+      swal('','Debe seleccionar una comuna', 'info');
+    }
 
   }
-  solicitarArriendo(){
-    
+
+  searchAll(){
+    this.firebase.getAllPublications().subscribe((data) => {
+      this.dataIN = data;
+    })
   }
 
   verFicha(id){

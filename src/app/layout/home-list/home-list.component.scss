@@ -13,22 +13,20 @@
 }
 
 .ctn-img{
-    // border: 1px solid red;
     height: 200px;
-    // background: #bacce0;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+    margin-top: 16px !important;
 
     
 }
 
 .img{
-    background-size: cover;
-    max-width: 100%;
-    max-height: 200px;
-
-
+    background-size: contain;
+    max-width: 100% !important;
+    max-height: 100% !important;
 }
+
 @media only screen and (min-width: 600px) {
     .centerWrapper{
         margin-top: 30px;
@@ -101,7 +99,7 @@
 .cardList{
     height: 350px;
     width: 95%;
-
+    border: 1px solid #39c84c;
     padding: 0px;
     // -webkit-box-shadow: 0px 0px 35px -25px rgba(0,0,0,0.75);
     -webkit-box-shadow: 0px 0px 17px 0px rgb(212, 212, 212);

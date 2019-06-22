@@ -48,6 +48,30 @@ export class FirebaseService {
         })
     }
 
+
+    addPublish(pub){
+        return this.db.collection('publicaciones').add({
+            id: pub.id,
+            categoria: pub.categoria,
+            patente: pub.patente,
+            modelo: pub.modelo, 
+            marca: pub.marca, 
+            anio: pub.anio, 
+            combustible: pub.combustible,
+            transmision: pub.transmision,
+            cilindraje: pub.cilindraje,
+            capacidad: pub.capacidad,
+            valorDia: pub.valorDia,
+            valorHora: pub.valorHora,
+            descripcion: pub.descripcion,
+            fechaPublicacion: pub.fechaPublicacion,
+            publicante: pub.publicante,
+            img1: pub.img1, 
+            img2: pub.img2,
+            img3: pub.img3, 
+            img4: pub.img4 
+        })
+    }
     
     getLoginUser(){
         return this.db.collection("/users").get();
@@ -76,6 +100,17 @@ export class FirebaseService {
         });
     }
 
+
+
+    removeSolicitud(docId){
+        return this.db.doc('/solicitudes/'+docId).delete();
+    }
+
+    getDocumentIdRequest(id){
+        return this.db.collection('/solicitudes', ref => ref.where('idSolicitud','==', id)).snapshotChanges();
+    }
+
+
     existMail(mail){
         return this.db.collection('/users', ref => ref.where('mail','==', mail)).valueChanges();
     }
@@ -91,6 +126,10 @@ export class FirebaseService {
 
     getDocumentId(id){
         return this.db.collection('/publicaciones', ref => ref.where('id','==', id)).snapshotChanges();
+    }
+
+    searchPublished(comuna, categoria){
+        return this.db.collection('/publicaciones', ref => ref.where('comuna','==',comuna).where('categoria','==',categoria)).valueChanges();
     }
 
     addNewRequest(el){
@@ -111,43 +150,12 @@ export class FirebaseService {
        return this.db.collection('/publicaciones').valueChanges();
     }
 
-    getPublicationsForFilter(filter: any){
-        // Devuelve todas las publicaciones segun el filtro aplicado.
-
-    }
-
-    getRequestSendForUser(usekey: any){
-        // Devuelve todas las solicitudes enviadas por un usuario.
-
-    }
-
-    getRequestReceivedForUser(userkey: any){
-        // Devuelve todas las solicitudes enviadas por un usuario.
-
-    }
 
     getUsers(){
 
         return this.db.collection('/users').snapshotChanges();
     }
 
-    setNewPublicationInUser(pub){
-        //ID del usuario para agregar como una publicacion de el
-    }
-
-    setAllPublicacion(){
-        //Despues de agregar la publicacion al usuario se agrega en las generales
-
-    }
-
-    sendNewRequest(req){
-        //Solicitudes enviadas por usuarios
-    }
-
-    setNewRequestInPublication(){
-        // ID del usuario y ID de la publicacion. Solicitudes seteadas en las recibidas por usuario
-
-    }
 
     setNewUser(us){
         // Registra un nuevo usuario
@@ -165,9 +173,6 @@ export class FirebaseService {
         });
     }
 
-    deletePublicaction(){
-        //Recibe el ID del usuario
-    }
 
 
 }

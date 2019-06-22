@@ -14,6 +14,9 @@ export class user{
 }
 
 export class publicacion{
+    id = "";
+    titulo = "";
+    comuna = "";
     publicante = "";
     categoria = "";
     patente = "";
@@ -23,14 +26,15 @@ export class publicacion{
     combustible = "";
     transmision = "";
     cilindraje = "";
-    capacidadCarga = "";
+    capacidad = "";
     valorDia = "";
     valorHora = "";
     fechaPublicacion = "";
-    imagenUrl_1 = "";
-    imagenUrl_2 = ""; 
-    imagenUrl_3 = "";
-    imagenUrl_4 = "";
+    descripcion = "";
+    img1 = "";
+    img2 = ""; 
+    img3 = "";
+    img4 = "";
 
 }   
 

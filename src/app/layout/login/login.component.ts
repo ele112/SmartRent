@@ -116,7 +116,7 @@ export class LoginComponent implements OnInit {
           this.selectedFile2.pending = true;
           this.file2 = _event.item(0);
           let base64 = reader.result;
-          this.imgURL3 = base64;  
+          this.imgURL2 = base64;  
 
         }else{
 
@@ -157,13 +157,15 @@ export class LoginComponent implements OnInit {
 
     task1.then(() => {
 
-      this.storage.ref(path1).getDownloadURL().subscribe(licencia => {
-        
+      let e = this.storage.ref(path1).getDownloadURL().subscribe(licencia => {
+        e.unsubscribe();
         task2.then(() => {
-          this.storage.ref(path2).getDownloadURL().subscribe(antecedentes => {
+          let j = this.storage.ref(path2).getDownloadURL().subscribe(antecedentes => {
+            j.unsubscribe();
             task3.then(() => {
 
-              this.storage.ref(path3).getDownloadURL().subscribe(carnet => {
+              let c = this.storage.ref(path3).getDownloadURL().subscribe(carnet => {
+                c.unsubscribe();
                 this.create(licencia,antecedentes,carnet);
               });
             });

@@ -23,6 +23,14 @@
     font-size: 25px;
     font-weight: bold;
 }
+.imageUp{
+    border: 1px solid #39c84c;
+    height: 50px !important;
+    input{
+        width: 0%;
+        // height: 30px;
+    }
+}
 
 .body-items{
     // border: 1px solid red;
@@ -51,9 +59,46 @@ mat-select{
 
 .inline{
     margin-left: 5px;
+    // border: 1px solid #39c84c;
     // column-count: 4;
     // padding: 
 }
 .inline-ctn{
     column-count: 4;
 }
+.marg{
+    height: 80px;
+    // border: 1px solid red;
+}
+
+
+.image-upload-container {
+    cursor: pointer;
+  }
+  
+  .img-preview-container {
+    background-color: #f7f7f7;
+    position: absolute;
+  
+    .img-preview {
+      background: center center no-repeat;
+      background-size: contain;
+      height: 80px;
+      width: 90px !important;
+  
+      &-error {
+        display: none;
+      }
+    }
+  }
+  
+  .img-loading-overlay {
+      background-color: black;
+      bottom: 0;
+      left: 0;
+      opacity: .2;
+      position: absolute;
+      right: 0;
+      top: 0;
+  }
+  

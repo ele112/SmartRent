@@ -8,47 +8,97 @@
           <p class="font-text-title">Publicar aviso</p>
         </div>
         <div class="body-items">
-          <form  [formGroup]="publishForm" class="example-form">
+          <form [formGroup]="publishForm" class="example-form">
 
             <div class="row">
               <div class="col-sm-6">
-                  <mat-form-field class="example-full-width">
-                    <input matInput formControlName="titulo" placeholder="Titulo">
-                  </mat-form-field>
+                <mat-form-field class="example-full-width">
+                  <input matInput formControlName="titulo" type="text" maxlength="100" minlength="3" placeholder="Titulo">
+                </mat-form-field>
               </div>
-              <div class="col-sm-6"></div>
+              <div class="col-sm-6">
+                <mat-form-field class="example-full-width">
+                  <mat-label>Comuna</mat-label>
+                  <mat-select formControlName="comuna">
+                      <mat-option>None</mat-option>
+                      <mat-option value="Cerrillos">Cerrillos</mat-option>
+                      <mat-option value="Cerro Navia">Cerro Navia</mat-option>
+                      <mat-option value="Conchali">Conchali</mat-option>
+                      <mat-option value="EL Bosque">EL Bosque</mat-option>
+                      <mat-option value="Estacion Central">Estacion Central</mat-option>
+                      <mat-option value="Huechuraba">Huechuraba</mat-option>
+                      <mat-option value="Independencia">Independencia</mat-option>
+                      <mat-option value="La Cisterna">La Cisterna</mat-option>
+                      <mat-option value="La Florida">La Florida</mat-option>
+                      <mat-option value="La Granja">La Granja</mat-option>
+                      <mat-option value="La Pintana">La Pintana</mat-option>
+                      <mat-option value="Las Condes">Las Condes</mat-option>
+                      <mat-option value="Lo Barnechea">Lo Barnechea</mat-option>
+                      <mat-option value="Automovil">Lo Espejo</mat-option>
+                      <mat-option value="AutLo Espejoomovil">Lo Prado</mat-option>
+                      <mat-option value="Macul">Macul</mat-option>
+                      <mat-option value="Maipu">Maipu</mat-option>
+                      <mat-option value="Nunoa">Nunoa</mat-option>
+                      <mat-option value="Padre Hurtado">Padre Hurtado</mat-option>
+                      <mat-option value="Penalolen">Penalolen</mat-option>
+                      <mat-option value="Providencia">Providencia</mat-option>
+                      <mat-option value="Pudahuel">Pudahuel</mat-option>
+                      <mat-option value=">Puente Alto">Puente Alto</mat-option>
+                      <mat-option value="Quilicura">Quilicura</mat-option>
+                      <mat-option value="Quinta Normal">Quinta Normal</mat-option>
+                      <mat-option value="Recoleta">Recoleta</mat-option>
+                      <mat-option value="Renca">Renca</mat-option>
+                      <mat-option value="San Bernardo">San Bernardo</mat-option>
+                      <mat-option value="San Joaquin">San Joaquin</mat-option>
+                      <mat-option value="San Miguel">San Miguel</mat-option>
+                      <mat-option value="San Ramon">San Ramon</mat-option>
+                      <mat-option value="Santiago">Santiago</mat-option>
+                      <mat-option value="Vitacura">Vitacura</mat-option>
+                  </mat-select>
+              
+                </mat-form-field>
+              
+              </div>
 
             </div>
             <div class="row">
               <div class="col-sm-4">
                 <mat-form-field class="example-full-width">
                   <mat-label>Categorías</mat-label>
-                  <mat-select  formControlName="categoria">
+                  <mat-select formControlName="categoria">
                     <mat-option>None</mat-option>
-                    <mat-option value="option1">Option 1</mat-option>
-                    <mat-option value="option2">Option 2</mat-option>
-                    <mat-option value="option3">Option 3</mat-option>
+                    <mat-option value="Automovil">Automovil</mat-option>
+                    <mat-option value="Motocicleta">Motocicleta</mat-option>
+                    <mat-option value="Minibus">Minibus</mat-option>
+                    <mat-option value="Autobus">Autobus</mat-option>
+                    <mat-option value="Camion">Camion</mat-option>
+                    <mat-option value="Remolque">Remolque</mat-option>
+                    <mat-option value="Carga pesada">Carga pesada</mat-option>
+                    <mat-option value="Maquinaria Agricola">Maquinaria Agricola</mat-option>
+                    <mat-option value="Maquinaria industrial">Maquinaria industrial</mat-option>
+                    
+
                   </mat-select>
                 </mat-form-field>
               </div>
               <div class="col-sm-2">
                 <mat-form-field class="example-full-width">
-                  <input matInput formControlName="patente" placeholder="Patente">
+                  <input matInput formControlName="patente" maxlength="6" minlength="3" type="text" placeholder="Patente">
                 </mat-form-field>
               </div>
               <div class="col-sm-2">
                 <mat-form-field class="example-full-width">
-                  <input matInput formControlName="modelo" placeholder="Modelo">
+                  <input matInput formControlName="modelo" type="text" maxlength="20" minlength="2" placeholder="Modelo">
                 </mat-form-field>
               </div>
               <div class="col-sm-2">
                 <mat-form-field class="example-full-width">
-                  <input matInput formControlName="marca" placeholder="Marca">
+                  <input matInput formControlName="marca" type="text" maxlength="20" minlength="2" placeholder="Marca">
                 </mat-form-field>
               </div>
               <div class="col-sm-2">
                 <mat-form-field class="example-full-width">
-                  <input matInput formControlName="anio" placeholder="Año">
+                  <input matInput formControlName="anio" type="number"  maxlength="4" minlength="2" placeholder="Año">
                 </mat-form-field>
               </div>
 
@@ -56,46 +106,45 @@
             <br>
             <div class="row">
               <div class="col-sm-2">
-                  <mat-form-field class="example-full-width">
-                      <mat-label>Combustible</mat-label>
-                      <mat-select formControlName="combustible">
-                        <mat-option>None</mat-option>
-                        <mat-option value="option1">Bencina 93</mat-option>
-                        <mat-option value="option2">Bencina 95</mat-option>
-                        <mat-option value="option3">Bencina 97</mat-option>
-                        <mat-option value="option3">Diésel</mat-option>
-                      </mat-select>
-                    </mat-form-field>
-              </div>
-              <div class="col-sm-2">
-                  <mat-form-field class="example-full-width">
-                      <mat-label>Transmision</mat-label>
-                      <mat-select formControlName="transmision" >
-                        <mat-option>None</mat-option>
-                        <mat-option value="option1">Ninguna</mat-option>
-                        <mat-option value="option2">Automática</mat-option>
-                        <mat-option value="option3">Manual</mat-option>
-                      </mat-select>
-                    </mat-form-field>
-              </div>
-              <div class="col-sm-2">
                 <mat-form-field class="example-full-width">
-                  <input matInput formControlName="cilindraje" placeholder="Cilindraje">
+                  <mat-label>Combustible</mat-label>
+                  <mat-select formControlName="combustible">
+                    <mat-option>None</mat-option>
+                    <mat-option value="Bencina">Bencina</mat-option>
+                    <mat-option value="Diesel">Diésel</mat-option>
+                    <mat-option value="Electrico">Eléctrico</mat-option>
+                    <mat-option value="option3">Gas</mat-option>
+                  </mat-select>
                 </mat-form-field>
               </div>
               <div class="col-sm-2">
                 <mat-form-field class="example-full-width">
-                  <input matInput formControlName="carga" placeholder="Capacidad de carga (Kg)">
+                  <mat-label>Transmision</mat-label>
+                  <mat-select formControlName="transmision">
+                    <mat-option>None</mat-option>
+                    <mat-option value="Automatica">Automática</mat-option>
+                    <mat-option value="Manual">Manual</mat-option>
+                  </mat-select>
                 </mat-form-field>
               </div>
               <div class="col-sm-2">
                 <mat-form-field class="example-full-width">
-                  <input matInput formControlName="valorDia" placeholder="Valor dia">
+                  <input matInput formControlName="cilindraje" type="number" maxlength="10" minlength="2" placeholder="Cilindraje">
                 </mat-form-field>
               </div>
               <div class="col-sm-2">
                 <mat-form-field class="example-full-width">
-                  <input matInput formControlName="valorHora" placeholder="Valor hora">
+                  <input matInput formControlName="carga" type="number" maxlength="10" minlength="2" placeholder="Capacidad (Kg)">
+                </mat-form-field>
+              </div>
+              <div class="col-sm-2">
+                <mat-form-field class="example-full-width">
+                  <input matInput formControlName="valorDia" type="number" maxlength="20" minlength="2" placeholder="Valor dia">
+                </mat-form-field>
+              </div>
+              <div class="col-sm-2">
+                <mat-form-field class="example-full-width">
+                  <input matInput formControlName="valorHora" type="number" maxlength="20" minlength="2" placeholder="Valor hora">
                 </mat-form-field>
               </div>
             </div>
@@ -103,32 +152,112 @@
             <br>
             <div class="row">
               <div class="col-sm-4">
-                <mat-form-field  class="example-full-width">
+                <mat-form-field class="example-full-width">
                   <textarea matInput formControlName="descripcion" rows="8" placeholder="Descripcion"></textarea>
                 </mat-form-field>
               </div>
               <div class="col-sm-8" align="left">
-              <p for="">Selecciona imágenes</p>
+                <p for="">Selecciona imágenes</p>
 
-              <div class="inline-ctn">
+                <div class="inline-ctn">
+
                   <div class="inline">
-                      <img src="http://placehold.it/80x80" />
+                    <!-- <img src="http://placehold.it/80x80" /> -->
+                    <label class="image-upload-container btn btn-bwm imageUp">
+                      <span>Portada</span>
+                      <input #imageInput1 type="file" accept="image/*"
+                        (change)="processFile($event.target.files, imageInput1, '1')">
+                    </label>
+
+
                   </div>
                   <div class="inline">
-                      <img src="http://placehold.it/80x80" />
-                  </div>  
-                   <div class="inline">
-                      <img src="http://placehold.it/80x80" />
-                  </div> 
-                  <div class="inline">
-                      <img src="http://placehold.it/80x80" />
+                    <!-- <img src="http://placehold.it/80x80" /> -->
+                    <label class="image-upload-container btn btn-bwm imageUp">
+                      <span>Imagen 1</span>
+                      <input #imageInput2 type="file" accept="image/*" 
+                      (change)="processFile($event.target.files, imageInput2, '2')">
+                    </label>
                   </div>
-  
-              </div>         
+                  <div class="inline">
+                    <!-- <img src="http://placehold.it/80x80" /> -->
+                    <label class="image-upload-container btn btn-bwm imageUp">
+                      <span>Imagen 2</span>
+                      <input #imageInput3 type="file" accept="image/*" 
+                      (change)="processFile($event.target.files, imageInput3, '3')">
+                    </label>
+                  </div>
+                  <div class="inline">
+                    <!-- <img src="http://placehold.it/80x80" /> -->
+                    <label class="image-upload-container btn btn-bwm imageUp">
+                      <span>Imagen 3</span>
+                      <input #imageInput4 type="file" accept="image/*" 
+                      (change)="processFile($event.target.files, imageInput4, '4')">
+                    </label>
+                  </div>
+
+                </div>
+
+                <div class="row">
+                  <div class="col-sm-3 marg">
+                    <div *ngIf="selectedFile1" class="img-preview-container">
+                      <div class="img-preview{{selectedFile1.status === 'fail' ? '-error' : ''}}"
+                        [ngStyle]="{'background-image': 'url('+ selectedFile1.src + ')'}">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-3 marg">
+                      <div *ngIf="selectedFile2" class="img-preview-container">
+                          <div class="img-preview{{selectedFile2.status === 'fail' ? '-error' : ''}}"
+                            [ngStyle]="{'background-image': 'url('+ selectedFile2.src + ')'}">
+                          </div>
+                        </div>
+
+                  </div>
+                  <div class="col-sm-3 marg">
+                      <div *ngIf="selectedFile3" class="img-preview-container">
+                          <div class="img-preview{{selectedFile3.status === 'fail' ? '-error' : ''}}"
+                            [ngStyle]="{'background-image': 'url('+ selectedFile3.src + ')'}">
+                          </div>
+                        </div>
+
+                  </div>
+                  <div class="col-sm-3 marg">
+                      <div *ngIf="selectedFile4" class="img-preview-container">
+                          <div class="img-preview{{selectedFile4.status === 'fail' ? '-error' : ''}}"
+                            [ngStyle]="{'background-image': 'url('+ selectedFile4.src + ')'}">
+                          </div>
+                        </div>
+
+                  </div>
+
+                </div>
+<!-- 
+                <div class="inline-ctn marg" *ngIf="!selectedFile">
+
+                  <div class="inline">
+
+                      <div *ngIf="selectedFile1" class="img-preview-container">
+                          <div class="img-preview{{selectedFile1.status === 'fail' ? '-error' : ''}}"
+                            [ngStyle]="{'background-image': 'url('+ selectedFile1.src + ')'}">
+                          </div>
+                        </div>
+
+                  </div>
+                  <div class="inline"></div>
+                  <div class="inline"></div>
+                  <div class="inline"></div>
+
+
+
+                </div> -->
+
+
+
               </div>
             </div>
 
-            <button mat-flat-button style="margin-top: 50px;" (click)="publish()" color="primary">Publicar</button>
+            <button mat-flat-button style="margin-top: 50px;" [disabled]="!_button" (click)="publish()" color="primary">Publicar</button>
 
             <br><br>
 

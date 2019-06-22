@@ -33,30 +33,23 @@ export class HomeListComponent implements OnInit {
     console.log(this.comuna);
     console.log(this.categoria);
 
-    if (this.comuna == undefined && this.comuna == undefined) {
-        swal('','Debe seleccionar al menos un filtro de búsqueda', 'info');
-    } else if (this.comuna != "" && this.comuna != null) {
-
-      if (this.categoria != "" && this.categoria != null) {
-
-        let r = this.firebase.searchPublished(this.comuna, this.categoria).subscribe((data) => {
-          r.unsubscribe();
-          this.dataIN = data;
-        });
-
-      } else {
-        // swal('','Debe seleccionar una categoria', 'info');
-        let b = this.firebase.searchForComuna(this.comuna).subscribe((data) => {
-          b.unsubscribe();
-          this.dataIN = data;
-        })
-      }
-
-    } else {
-      // swal('','Debe seleccionar una comuna', 'info');
+    if(this.comuna == undefined && this.categoria != undefined){
       let a = this.firebase.searchForCategoria(this.categoria).subscribe((data) => {
+        a.unsubscribe();
         this.dataIN = data;
       });
+    }else if(this.comuna != undefined && this.categoria == undefined){
+      let b = this.firebase.searchForComuna(this.comuna).subscribe((data) => {
+        b.unsubscribe();
+        this.dataIN = data;
+      })
+    }else if(this.comuna != undefined && this.categoria != undefined){
+      let r = this.firebase.searchPublished(this.comuna, this.categoria).subscribe((data) => {
+        r.unsubscribe();
+        this.dataIN = data;
+      });
+    }else{
+      swal('','Debe seleccionar al menos un filtro de búsqueda', 'info');
     }
 
   }

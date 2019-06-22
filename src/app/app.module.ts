@@ -28,6 +28,8 @@ import { FirebaseService } from './service/firebase.service';
 import { LoginComponent } from './layout/login/login.component';
 import { ValidaRutProvider } from './service/validaRut';
 import {SlideshowModule} from 'ng-simple-slideshow';
+import { NgxSpinnerModule } from 'ngx-spinner';
+
 
 @NgModule({
   declarations: [
@@ -57,7 +59,8 @@ import {SlideshowModule} from 'ng-simple-slideshow';
     MaterialModule,
     ReactiveFormsModule,
     FormsModule,
-    SlideshowModule
+    SlideshowModule,
+    NgxSpinnerModule
     
   ],
   providers: [FirebaseService, ValidaRutProvider],

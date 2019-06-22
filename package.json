@@ -34,6 +34,7 @@
     "moment": "^2.24.0",
     "ng-simple-slideshow": "^1.2.9",
     "ngx-smart-modal": "^7.1.1",
+    "ngx-spinner": "^7.1.4",
     "path": "^0.12.7",
     "rxjs": "~6.3.3",
     "sweetalert": "^2.1.2",

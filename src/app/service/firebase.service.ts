@@ -52,7 +52,9 @@ export class FirebaseService {
     addPublish(pub){
         return this.db.collection('publicaciones').add({
             id: pub.id,
+            titulo: pub.titulo,
             categoria: pub.categoria,
+            comuna: pub.comuna,
             patente: pub.patente,
             modelo: pub.modelo, 
             marca: pub.marca, 
@@ -128,8 +130,18 @@ export class FirebaseService {
         return this.db.collection('/publicaciones', ref => ref.where('id','==', id)).snapshotChanges();
     }
 
+    searchForCategoria(categoria){
+        return this.db.collection('/publicaciones', ref => ref.where('categoria','==',categoria)
+        .orderBy('fechaPublicacion', 'desc')).valueChanges();
+    }
+    searchForComuna(comuna){
+        return this.db.collection('/publicaciones', ref => ref.where('comuna','==',comuna)
+        .orderBy('fechaPublicacion', 'desc')).valueChanges();
+    }
+
     searchPublished(comuna, categoria){
-        return this.db.collection('/publicaciones', ref => ref.where('comuna','==',comuna).where('categoria','==',categoria)).valueChanges();
+        return this.db.collection('/publicaciones', ref => ref.where('comuna','==',comuna).where('categoria','==',categoria)
+        .orderBy('fechaPublicacion', 'desc')).valueChanges();
     }
 
     addNewRequest(el){
@@ -147,7 +159,7 @@ export class FirebaseService {
 
     getAllPublications(){
         // Devuelve todas las publicaciones realizadas, para ser desplegadas en el catalogo.
-       return this.db.collection('/publicaciones').valueChanges();
+       return this.db.collection('/publicaciones', ref => ref.orderBy('fechaPublicacion', 'desc')).valueChanges();
     }
 
 

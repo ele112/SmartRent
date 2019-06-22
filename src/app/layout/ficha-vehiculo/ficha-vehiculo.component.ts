@@ -107,6 +107,7 @@ export class FichaVehiculoComponent implements OnInit {
         swal('', 'Ya creo una solicitud a este vehículo', 'warning');
       }else{
 
+        console.log(this.itemData)
         let element = {
           idSolicitud: this.random(),
           idPublicacion: this.itemData['id'],
@@ -116,6 +117,7 @@ export class FichaVehiculoComponent implements OnInit {
           estado: "null",
           comentarioSolicitud: n
         }
+        console.log(element)
         if(solicitudes != undefined){
           solicitudes.push(element);
         }else{

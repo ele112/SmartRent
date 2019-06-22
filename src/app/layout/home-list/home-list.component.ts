@@ -29,25 +29,34 @@ export class HomeListComponent implements OnInit {
     this.dataIN = [];
   }
 
-  buscar(){
+  buscar() {
     console.log(this.comuna);
     console.log(this.categoria);
 
-    if(this.comuna != "" && this.comuna != null){
+    if (this.comuna == undefined && this.comuna == undefined) {
+        swal('','Debe seleccionar al menos un filtro de búsqueda', 'info');
+    } else if (this.comuna != "" && this.comuna != null) {
 
-      if(this.categoria != "" && this.categoria != null){
-        
+      if (this.categoria != "" && this.categoria != null) {
+
         let r = this.firebase.searchPublished(this.comuna, this.categoria).subscribe((data) => {
           r.unsubscribe();
           this.dataIN = data;
         });
 
-      }else{
-        swal('','Debe seleccionar una categoria', 'info');
+      } else {
+        // swal('','Debe seleccionar una categoria', 'info');
+        let b = this.firebase.searchForComuna(this.comuna).subscribe((data) => {
+          b.unsubscribe();
+          this.dataIN = data;
+        })
       }
 
-    }else{
-      swal('','Debe seleccionar una comuna', 'info');
+    } else {
+      // swal('','Debe seleccionar una comuna', 'info');
+      let a = this.firebase.searchForCategoria(this.categoria).subscribe((data) => {
+        this.dataIN = data;
+      });
     }
 
   }

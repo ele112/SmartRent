@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { ImageSnippet, publicacion } from '../../service/data-model';
 import {FirebaseService} from '../../service/firebase.service';
 import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/storage';
+import { NgxSpinnerService } from 'ngx-spinner';
+
 import * as moment from 'moment';
 
 import swal from 'sweetalert';
@@ -37,6 +39,7 @@ export class PublicarAvisoComponent implements OnInit {
   constructor(private _formBuilder: FormBuilder,
     private storage: AngularFireStorage,
     private router: Router,
+    private spinner: NgxSpinnerService,
      private fire: FirebaseService,) { }
 
   ngOnInit() {
@@ -140,7 +143,7 @@ export class PublicarAvisoComponent implements OnInit {
 
 
   publish() {
-
+    this.spinner.show();
     let data = this.publishForm.value;
     console.log(data);
     if (this.file1 != undefined && this.file2 != undefined && this.file3 != undefined && this.file4 != undefined) {
@@ -259,6 +262,8 @@ export class PublicarAvisoComponent implements OnInit {
       pub.img3 = item['image3'];
       pub.img4 = item['image4'];
 
+      console.log(pub);
+      this.spinner.hide();
       this.fire.addPublish(pub).then(() => {
         swal('','Publicación creada con éxito!', 'success').then(() =>{
           this.router.navigate(['/Home']);

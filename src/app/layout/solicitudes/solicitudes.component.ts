@@ -53,6 +53,12 @@ export class SolicitudesComponent implements OnInit {
     console.log(solicitudes);
   }
 
+  publicacion(data){
+    console.log(data);
+    let publicacion = data['idPublicacion'];
+    this.router.navigate(['/Ficha', {Id: publicacion}]);
+  }
+
   solicitudEstado(data){
     let email = localStorage.getItem('userMail');
     let subject = "Solicitud arriendo vehículo";

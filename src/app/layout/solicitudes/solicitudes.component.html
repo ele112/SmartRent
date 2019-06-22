@@ -31,10 +31,13 @@
                     </div>
                   </div>
                   <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-sm-4">
                       <button mat-button style="color: rgb(0, 179, 0);" (click)="solicitudEstado(item)">Contactar</button>
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-sm-4">
+                      <button mat-button style="color: blue;" (click)="publicacion(item)">Publicacion</button>
+                    </div>
+                    <div class="col-sm-4">
                         <button mat-button color="primary" [routerLink]="['/Perfil', {Id: item.rutSolicitante}]" >Ver perfil</button>
                     </div>
                   </div>

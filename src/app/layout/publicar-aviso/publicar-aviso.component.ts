@@ -143,7 +143,6 @@ export class PublicarAvisoComponent implements OnInit {
 
 
   publish() {
-    this.spinner.show();
     let data = this.publishForm.value;
     console.log(data);
     if (this.file1 != undefined && this.file2 != undefined && this.file3 != undefined && this.file4 != undefined) {
@@ -154,7 +153,7 @@ export class PublicarAvisoComponent implements OnInit {
         let valida = this.validaPatente(data['patente']);
         if (valida) {
 
-
+          this.spinner.show();
           //Subiendo Imagenes
           const path1 = `photos/DocPublish/${new Date().getTime()}_${'photo1'}`;
           const path2 = `photos/DocPublish/${new Date().getTime()}_${'photo2'}`;

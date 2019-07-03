@@ -33,23 +33,34 @@ export class HomeListComponent implements OnInit {
     console.log(this.comuna);
     console.log(this.categoria);
 
-    if(this.comuna == undefined && this.categoria != undefined){
-      let a = this.firebase.searchForCategoria(this.categoria).subscribe((data) => {
-        a.unsubscribe();
+    if(this.categoria == 'publicacion'){
+      let rut  = localStorage.getItem('userRut');
+      let e = this.firebase.searchForRut(rut).subscribe((data) => {
+        e.unsubscribe();
         this.dataIN = data;
       });
-    }else if(this.comuna != undefined && this.categoria == undefined){
-      let b = this.firebase.searchForComuna(this.comuna).subscribe((data) => {
-        b.unsubscribe();
-        this.dataIN = data;
-      })
-    }else if(this.comuna != undefined && this.categoria != undefined){
-      let r = this.firebase.searchPublished(this.comuna, this.categoria).subscribe((data) => {
-        r.unsubscribe();
-        this.dataIN = data;
-      });
+
     }else{
-      swal('','Debe seleccionar al menos un filtro de búsqueda', 'info');
+
+      if(this.comuna == undefined && this.categoria != undefined){
+        let a = this.firebase.searchForCategoria(this.categoria).subscribe((data) => {
+          a.unsubscribe();
+          this.dataIN = data;
+        });
+      }else if(this.comuna != undefined && this.categoria == undefined){
+        let b = this.firebase.searchForComuna(this.comuna).subscribe((data) => {
+          b.unsubscribe();
+          this.dataIN = data;
+        })
+      }else if(this.comuna != undefined && this.categoria != undefined){
+        let r = this.firebase.searchPublished(this.comuna, this.categoria).subscribe((data) => {
+          r.unsubscribe();
+          this.dataIN = data;
+        });
+      }else{
+        swal('','Debe seleccionar al menos un filtro de búsqueda', 'info');
+      }
+
     }
 
   }

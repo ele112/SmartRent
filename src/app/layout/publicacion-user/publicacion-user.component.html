@@ -1,0 +1,57 @@
+<section id="main">
+  <section id="content">
+    <div class="body" align="center">
+      <mat-card class="body-card" align="center">
+        <p style="font-size: 22px">Mis publicaciones</p>
+
+        <div class="ctnList" align="center">
+
+          <br>
+          <div class="row">
+            <div class="col-sm-12 col-md-4 col-xs-4" *ngFor="let item of dataIN; let i = index">
+              <br><br>
+              <!-- (click)="verFicha(item.id)" -->
+              <mat-card class="cardList">
+                  <div class="buttons">
+                      <button mat-icon-button (click)="delete(item.id)" style="color: red; border: 1px solid green; background: white" >
+                          <i class="zmdi zmdi-delete zdmi-hc-3x"></i>
+                      </button>
+                  </div>
+                <div class="ctn-img">
+                  <img mat-card-image [src]="item.img1" class="img">
+                 
+                </div>
+                <div style="padding: 7px;">
+                  <label class="marca">{{item.marca}}</label><br>
+                  <label class="modelo">{{item.modelo}}</label>
+                  <div class="row">
+                    <div class="col-sm-6" align="left">
+                      <label class="year">AÑO: {{item.anio}}</label>
+                    </div>
+                    <div class="col-sm-6" align="right">
+                      <label class="plate">Patente: {{item.patente}}</label>
+                    </div>
+                  </div>
+                  <div class="row foot">
+                    <div class="col-sm-6" align="left">
+                      <label for="">Detalle</label>
+                    </div>
+                    <div class="col-sm-6" align="right">
+                      <label class="pricefn">${{item.valorDia}} x dia</label>
+                    </div>
+                  </div>
+                </div>
+
+              </mat-card>
+              <br>
+            </div>
+          </div>
+
+
+        </div>
+
+
+      </mat-card>
+    </div>
+  </section>
+</section>

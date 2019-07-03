@@ -29,6 +29,7 @@ import { LoginComponent } from './layout/login/login.component';
 import { ValidaRutProvider } from './service/validaRut';
 import {SlideshowModule} from 'ng-simple-slideshow';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { PublicacionUserComponent } from './layout/publicacion-user/publicacion-user.component';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     PerfilComponent,
     DropZoneDirective,
     FileSizePipe,
-    LoginComponent
+    LoginComponent,
+    PublicacionUserComponent
   ],
   imports: [
     BrowserModule,

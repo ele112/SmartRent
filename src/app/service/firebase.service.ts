@@ -130,6 +130,10 @@ export class FirebaseService {
         return this.db.collection('/publicaciones', ref => ref.where('id','==', id)).snapshotChanges();
     }
 
+    searchForRut(rut){
+        return this.db.collection('/publicaciones', ref => ref.where('publicante', '==', rut)).valueChanges();
+    }
+
     searchForCategoria(categoria){
         return this.db.collection('/publicaciones', ref => ref.where('categoria','==',categoria)
         .orderBy('fechaPublicacion', 'desc')).valueChanges();
@@ -156,6 +160,24 @@ export class FirebaseService {
         });
     }
 
+    removePublish(id){
+        let self = this;
+        return new Promise(function(resolve, reject){
+            let rr = self.db.collection('/publicaciones', ref => ref.where('id', '==', id)).snapshotChanges().subscribe((data) =>{
+                rr.unsubscribe();
+                let docId = data[0]['payload']['doc']['id'];
+                console.log(docId);
+                self.db.doc('/publicaciones/'+docId).delete().then(() => {
+                    resolve('OK');
+                }, (err) => {
+                    reject('Error '+err);
+                });
+            })
+        });
+      
+    }
+
+    // return this.db.doc('/solicitudes/'+docId).delete();
 
     getAllPublications(){
         // Devuelve todas las publicaciones realizadas, para ser desplegadas en el catalogo.

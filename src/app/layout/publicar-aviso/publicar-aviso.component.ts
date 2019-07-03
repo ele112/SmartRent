@@ -36,6 +36,9 @@ export class PublicarAvisoComponent implements OnInit {
   file4: any;
 
   _button: boolean;
+  cilin: any ='';
+  _valorH = '';
+  _valorD = '';
   constructor(private _formBuilder: FormBuilder,
     private storage: AngularFireStorage,
     private router: Router,
@@ -49,6 +52,30 @@ export class PublicarAvisoComponent implements OnInit {
     this._button = false;
   }
 
+  preventInput(event, ti){
+    if(ti == 'c'){
+      let value=this.cilin;
+      if (value >= 99999){
+        event.preventDefault()
+        this.cilin = parseInt(value.toString().substring(0,5));
+      }
+
+    }else if(ti == 'vH'){
+      let value2 = this._valorH;
+      if (value2 >= 999999999){
+        event.preventDefault()
+        this._valorH = parseInt(value2.toString().substring(0,7));
+      }
+    }else if(ti == 'vD'){
+      let value3 = this._valorD;
+      if (value3 >= 9999999999){
+        event.preventDefault()
+        this._valorD = parseInt(value3.toString().substring(0,10));
+      }
+    }
+
+  }
+
   private createForm() {
     return this._formBuilder.group({
       titulo: ['', Validators.required],
@@ -60,14 +87,14 @@ export class PublicarAvisoComponent implements OnInit {
       anio: ['', Validators.required],
       combustible: ['', Validators.required],
       transmision: [''],
-      cilindraje: ['',],
+      cilindraje: [''],
       carga: [''],
       valorDia: ['', Validators.required],
       valorHora: ['', Validators.required],
       descripcion: ['']
     });
   }
-
+  
   processFile(_event: FileList, imageInput: any, selected) {
     if (imageInput.files[0] != undefined) {
       const file: File = imageInput.files[0];

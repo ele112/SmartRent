@@ -37,8 +37,8 @@ export class PublicarAvisoComponent implements OnInit {
 
   _button: boolean;
   cilin: any ='';
-  _valorH = '';
-  _valorD = '';
+  _valorH: any  = '';
+  _valorD: any  = '';
   constructor(private _formBuilder: FormBuilder,
     private storage: AngularFireStorage,
     private router: Router,
